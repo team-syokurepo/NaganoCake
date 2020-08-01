@@ -1,0 +1,2 @@
+module Customers::AddressListsHelper
+end
