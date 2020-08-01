@@ -10,6 +10,34 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar nav-height">
+  <div class="container-fluid">
+    <div class="navbar-header">
+       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample2">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img src="/assets/logo.jpg" style="height: 100px;">
+      </a>
+    </div>
+    
+    <div class="collapse navbar-collapse" id="navbarEexample2">
+      <ul class="nav navbar-nav navbar-right nav-icon">
+        <li><a href="#" class="btn" style="background-color: #f0413d;">メニューＡ</a></li>
+        <li class="active" class="btn"  style="background-color: #f0413d;"><a href="#">メニューＢ</a></li>
+        <li><a href="#" class="btn btn-info">メニューＣ</a></li>
+        <li><a href="#" class="btn btn-warning">メニューＣ</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    </header>
     <%= yield %>
+    <footer class="footer">
+    </footer>
   </body>
 </html>
