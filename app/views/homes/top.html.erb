@@ -5,10 +5,12 @@
 		<div class="genre-search">
 			<h4>ジャンル検索</h4>
 			<div class="genre">
-			<p>ケーキ</p>
-			<p>焼き菓子</p>
-			<p>プリン</p>
-			<p>キャンディ</p>
+				<ul>
+					<li><%= link_to "ケーキ", customers_products_path, class: "genre-item" %></li>
+					<li><%= link_to "焼き菓子", customers_products_path, class: "genre-item" %></li>
+					<li><%= link_to "プリン", customers_products_path, class: "genre-item" %></li>
+					<li><%= link_to "キャンディ", customers_products_path, class: "genre-item" %></li>
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -52,8 +54,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-offset-11">
-			<a href="#">もっと見る></a>
+		<div class="col-xs-offset-11 more">
+			<%= link_to "もっと見る>", customers_products_path %>
 		</div>
 	</div>
 </div>
