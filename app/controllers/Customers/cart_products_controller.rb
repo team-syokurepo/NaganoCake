@@ -17,7 +17,7 @@ class Customers::CartProductsController < ApplicationController
 
 	def update
 		cart_product = CartProduct.find(params[:product_id])
-		cart_product.update
+		cart_product.update(cart_product_params)
 		redirect_to fallback_location
 	end
 

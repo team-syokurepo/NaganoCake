@@ -18,12 +18,24 @@
 				<th></th>
 			</tr>
 		</thead>
+		
 		<tbody>
+			<% @categories.each do |category| %>
 			<tr>
-				<td>ジャンル名</td>
-				<td>有効無効</td>
-				<td>編集ボタン</td>
+				<td><%= category.name %></td>
+				<td>
+					<% if category.valid_flag == valid %>
+						<p>"有効"</p>
+					<% else %>
+						<p>"無効"</p>
+					<% end %>
+				</td>
+				<td>
+					<%= link_to "編集する", edit_admins_category_path(category),class: "btn btn-primary" %>
+				</td>
 			</tr>
+		<% end %>
+
 		</tbody>
 	</table>
 </div>
