@@ -15,3 +15,28 @@
  */
  @import "bootstrap-sprockets";  /*ここを追加*/
  @import "bootstrap";            /*ここを追加*/
+ /*ヘッダーとフッターのCSS*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.nav-height{
+	height: 140px;
+	background-color: #112a63;
+}
+.nav-icon{
+	padding: 40px;
+	color: #f1efe7;
+}
+.menu-btn{
+	background-color: #f0413d;
+	color: #f1efe7;
+}
+.btn-style{
+	margin-right: 20px;
+}
+.footer {
+	background-color: #112a63;
+	height: 100px;
+}
