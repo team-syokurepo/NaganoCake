@@ -26,10 +26,17 @@
     </div>
     <div class="collapse navbar-collapse" id="navbarEexample2">
       <ul class="nav navbar-nav navbar-right nav-icon">
-        <li><%= link_to "About", home_about_path, class: "btn btn-style menu-btn" %></li>
-        <li ><%= link_to "商品一覧", customers_products_path, class: "btn btn-style menu-btn" %></li>
-        <li><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-info btn-style" %></li>
-        <li><%= link_to "ログイン", new_customer_session_path, class: "btn btn-warning btn-style" %></li>
+        <% if customer_signed_in? %>
+          <li><%= link_to "マイページ", customers_customers_path, class: "btn btn-style menu-btn" %></li>
+          <li ><%= link_to "商品一覧", customers_products_path, class: "btn btn-style menu-btn" %></li>
+          <li><%= link_to "カート", customers_cart_products_path, class: "btn btn-info btn-style" %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: "btn btn-warning btn-style" %></li>
+        <% else %>
+          <li><%= link_to "About", home_about_path, class: "btn btn-style menu-btn" %></li>
+          <li ><%= link_to "商品一覧", customers_products_path, class: "btn btn-style menu-btn" %></li>
+          <li><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-info btn-style" %></li>
+          <li><%= link_to "ログイン", new_customer_session_path, class: "btn btn-warning btn-style" %></li>
+        <% end %>
       </ul>
     </div>
   </div>

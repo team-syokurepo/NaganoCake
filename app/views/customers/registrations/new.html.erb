@@ -1,3 +1,4 @@
+<div class="top-all">
 <div class="continer">
   <div class="row">
     <div class="offset-3">
@@ -45,6 +46,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :住所 %>
+    <%= f.text_field :address, autocomplete: "address" %>
+  </div>
+
+  <div class="field">
     <%= f.label :電話番号 %>
     <%= f.text_field :phone_number, autocomplete: "phone_number" %>
   </div>
@@ -62,10 +68,10 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="actions">
+  <div class="actions btn btn-success">
     <%= f.submit "新規登録" %>
   </div>
 <% end %>
 <h2 class="registration-title">既に登録済みの方</h2>
 <p><%= link_to "こちら", new_session_path(resource_name) %> からログインしてください。</p>
-
+</div>

@@ -2,38 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.login-title {
-	font-size: 16px;
-	background-color: #EDEDED;
-	display: inline-block;
-	padding: 0 15px;
+
+
+.customers_customers {
+	background-color: #f1efe7;
+	color: #112a63;
 }
 
-.registration-title {
-	font-size: 20px;
-	background-color: #EDEDED;
-	display: inline-block;
-}
-
-.login-btn {
-	width: 131px;
-	height: 35px;
-	background-color: #3D8BCD;
-	font-color: white;
-}
-
-.forget {
-	margin-bottom: 10px;
-}
-
-.not-yet {
-	margin-top: 20px;
-}
-
-.signup-link {
-	text-decoration:underline;
-}
-
-.forget-link {
-	text-decoration:underline;
-}
