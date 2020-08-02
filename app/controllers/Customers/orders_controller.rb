@@ -1,5 +1,7 @@
 class Customers::OrdersController < ApplicationController
 	def index
+		# @customer = current_customer
+		# @orders = @customer.orders
 	end
 
 	def show
