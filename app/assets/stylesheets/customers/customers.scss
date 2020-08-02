@@ -6,6 +6,7 @@
 	font-size: 16px;
 	background-color: #EDEDED;
 	display: inline-block;
+	padding: 0 15px;
 }
 
 .registration-title {
@@ -14,16 +15,23 @@
 	display: inline-block;
 }
 
-.container {
-	/*background-color: blue;*/
+.login-btn {
+	width: 131px;
+	height: 35px;
+	background-color: #3D8BCD;
+	font-color: white;
 }
 
-.row {
-	/*background-color: red;*/
+.forget {
+	margin-bottom: 10px;
 }
 
+.not-yet {
+	margin-top: 20px;
+}
 
 .customers_customers {
 	background-color: #f1efe7;
 	color: #112a63;
 }
+
