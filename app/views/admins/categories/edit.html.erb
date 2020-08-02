@@ -1,4 +1,14 @@
 <div class="top-all">
 <div class="continer">
+	<h2>ジャンル編集</h2>
+	<%= form_with model:@category do |form| %>
+	<%= form.label :"ジャンル" %>
+	<%= form.text_field :name %>
+	<%= form.radio_button :valid_flag, :valid, checked: true %>
+	<%= form.label :valid_flag, "有効",{value: :valid} %>
+	<%= form.radio_button :valid_flag, :invalid %>
+	<%= form.label :valid_flag, "無効",{value: :invalid} %>
+	<%= form.submit "変更を保存する", class: "btn btn-info"%>
+	<% end %>
 </div>
 </div>

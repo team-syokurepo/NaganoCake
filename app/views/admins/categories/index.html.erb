@@ -1,6 +1,30 @@
 <div class="top-all">
 <div class="continer">
 	<h2>ジャンル一覧・追加</h2>
-	<%= form_with model:%>
+	<%= form_with model:@categry do |form| %>
+	<%= form.label :"ジャンル"%>
+	<%= form.text_field :name%>
+	<%= form.radio_button :valid_flag, :valid, checked: true%>
+	<%= form.label :valid_flag, "有効",{value: :valid}%>
+	<%= form.radio_button :valid_flag, :invalid%>
+	<%= form.label :valid_flag, "無効",{value: :invalid}%>
+	<%= form.submit "追加",class: "btn btn-info"%>
+	<% end %>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ジャンル</th>
+				<th>状態</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>ジャンル名</td>
+				<td>有効無効</td>
+				<td>編集ボタン</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 </div>

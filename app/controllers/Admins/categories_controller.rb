@@ -3,6 +3,7 @@ class Admins::CategoriesController < ApplicationController
 	end
 
 	def create
+		@category = Category.new
 	end
 
 	def edit
@@ -11,6 +12,4 @@ class Admins::CategoriesController < ApplicationController
 	def update
 	end
 
-		
-	end
 end
