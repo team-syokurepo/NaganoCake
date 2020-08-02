@@ -4,36 +4,46 @@
   <%= render "customers/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+    <%= f.label :名前（姓）%>
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name
+" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :名 %>
+    <%= f.text_field :first_name, autocomplete: "first_name" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.label :フリガナ（セイ） %>
+    <%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :メイ %>
+    <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :メールアドレス %>
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :郵便番号 %>
+    <%= f.text_field :postal_code, autocomplete: "postal_code" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :電話番号 %>
+    <%= f.text_field :phone_number, autocomplete: "phone_number" %>
   </div>
 
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
+
+  <%= link_to '退会する', customers_customers_quit_path, class: "btn btn-danger glyphicon glyphicon-warning-sign col-xs-offset-4" %>
 <% end %>
 
 <h3>Cancel my account</h3>
