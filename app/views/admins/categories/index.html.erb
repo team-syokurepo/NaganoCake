@@ -1,0 +1,42 @@
+<div class="top-all">
+<div class="continer">
+	<h2>ジャンル一覧・追加</h2>
+	<%= form_with model:@categry do |form| %>
+	<%= form.label :"ジャンル"%>
+	<%= form.text_field :name%>
+	<%= form.radio_button :valid_flag, :valid, checked: true%>
+	<%= form.label :valid_flag, "有効",{value: :valid}%>
+	<%= form.radio_button :valid_flag, :invalid%>
+	<%= form.label :valid_flag, "無効",{value: :invalid}%>
+	<%= form.submit "追加",class: "btn btn-info"%>
+	<% end %>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ジャンル</th>
+				<th>状態</th>
+				<th></th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<% @categories.each do |category| %>
+			<tr>
+				<td><%= category.name %></td>
+				<td>
+					<% if category.valid_flag == valid %>
+						<p>"有効"</p>
+					<% else %>
+						<p>"無効"</p>
+					<% end %>
+				</td>
+				<td>
+					<%= link_to "編集する", edit_admins_category_path(category),class: "btn btn-primary" %>
+				</td>
+			</tr>
+		<% end %>
+
+		</tbody>
+	</table>
+</div>
+</div>

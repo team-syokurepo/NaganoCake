@@ -1,0 +1,29 @@
+<div class="top-all">
+<div class="container">
+<div class="row">
+	<section class="product-index">
+		<h3>商品一覧</h3>
+		<table class="table table-bordered">
+		<thead style="background-color: #112a63;">
+			<tr style="color: #f1efe7;">
+				<th>商品ID</th>
+				<th>商品名</th>
+				<th>税抜価格</th>
+				<th>ジャンル</th>
+				<th>ステータス</th>
+			</tr>
+		</thead>
+		<% @products.each do |product| %>
+		<tr>
+			<td><%= product.id %></td>
+			<td><%= link_to product.name, admins_product_path(product.id) %><td>
+			<td><%= product.price %></td>
+			<td><%= product.category %></td>
+			<td><%= product.status %></td>
+		</tr>
+		<% end %>
+	</table>
+	</section>
+</div>
+</div>
+</div>
