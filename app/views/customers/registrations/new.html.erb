@@ -68,10 +68,10 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="actions btn btn-success">
-    <%= f.submit "新規登録" %>
+  <div class="actions">
+    <%= f.submit "新規登録", class: "btn btn-success" %>
   </div>
 <% end %>
 <h2 class="registration-title">既に登録済みの方</h2>
-<p><%= link_to "こちら", new_session_path(resource_name) %> からログインしてください。</p>
+<p><%= link_to "こちら", new_session_path(resource_name), class: "devise-link"%>　　からログインしてください。</p>
 </div>
