@@ -9,8 +9,9 @@
 	<%= form.radio_button :valid_flag, :false %>
 	<%= form.label :valid_flag, "無効",{value: :invalid} %>
 	<%= form.submit "変更を保存する", class: "btn btn-info"%>
-	<% end %>
 	<%= link_to "削除する",admins_category_path(@category), method: :delete,class: "btn btn-danger" %>
+	
+	<% end %>
 
  </div>
 </div>
