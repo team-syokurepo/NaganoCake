@@ -32,7 +32,7 @@ namespace :admins do
 	get "orders/today" => "orders#today"
 	patch "orders/:id/product_update" => "orders#product_update"
 	resources :products
-	resources :categories, only: [:index, :create, :edit, :update]
+	resources :categories, only: [:index, :create, :edit, :update, :destroy]
 	resources :customers, only: [:index, :show, :edit, :update]
 end
 
