@@ -6,5 +6,6 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :cart_products, dependent: :destroy
   has_many :address_lists, dependent: :destroy
+  acts_as_paranoid
 
 end
