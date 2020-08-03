@@ -7,4 +7,10 @@ class Customer < ApplicationRecord
   has_many :cart_products, dependent: :destroy
   has_many :address_lists, dependent: :destroy
 
+  validates :name, presence: true
+  validates :encrypted_password, presence: true
+
+  acts_as_paranoid
+
+
 end

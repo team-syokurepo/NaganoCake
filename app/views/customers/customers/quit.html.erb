@@ -1,0 +1,14 @@
+<div class="top-all">
+<div class="container quit_container">
+   <div class=" quit_text">
+		<p class="quit_text_question">本当に退会しますか？</p>
+		<p class="quit_text_sentence">退会すると、会員登録情報や<br>これまでの購入履歴が閲覧できなくなります。<br>退会する場合は、「退会する」をクリックしてください。</p>
+
+		<div class="quit_buttons">
+		  <%= link_to '退会しない', customers_customers_path, class: "btn btn-info quit_btn" %>
+
+	      <%= link_to '退会する', customers_customers_quit_update_path, method: :delete, class: "btn btn-danger quit_btn" %>
+	    </p>
+   </div>
+</div>
+</div>

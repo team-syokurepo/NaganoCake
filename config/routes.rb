@@ -17,8 +17,8 @@ get "search" => "searches#search"
 namespace :customers do
 	resource :customers, only: [:show, :edit, :update, :destroy]
 	get "customers/quit" => "customers#quit"
-	patch "customers/quit_update" => "customers#quit_update"
-	resources :orders, only: [:index, :show, :create, :new, :thanks]
+	delete "customers/quit_update" => "customers#quit_update"
+	resources :orders, only: [:index, :show, :create, :new]
 	get "orders/confirm" => "orders#confirm"
 	get "orders/thanks" => "orders#thanks"
 	resources :products, only: [:index, :show]
@@ -32,7 +32,7 @@ namespace :admins do
 	get "orders/today" => "orders#today"
 	patch "orders/:id/product_update" => "orders#product_update"
 	resources :products
-	resources :categories, only: [:index, :create, :edit, :update]
+	resources :categories, only: [:index, :create, :edit, :update, :destroy]
 	resources :customers, only: [:index, :show, :edit, :update]
 end
 
