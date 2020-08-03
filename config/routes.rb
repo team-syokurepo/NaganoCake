@@ -17,7 +17,7 @@ get "search" => "searches#search"
 namespace :customers do
 	resource :customers, only: [:show, :edit, :update, :destroy]
 	get "customers/quit" => "customers#quit"
-	patch "customers/quit_update" => "customers#quit_update"
+	delete "customers/quit_update" => "customers#quit_update"
 	resources :orders, only: [:index, :show, :create, :new]
 	get "orders/confirm" => "orders#confirm"
 	get "orders/thanks" => "orders#thanks"
