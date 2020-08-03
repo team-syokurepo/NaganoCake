@@ -9,19 +9,21 @@ class Customers::CustomersController < ApplicationController
 	end
 
 	def update
-		
 	end
 
 	def destroy
-		
 	end
 
 	def quit
-		
 	end
 
 	def quit_update
-		
+		# Customer.find_by(id: params[:id], customer_id: params[:customer_id]).destroy
+		customer = current_customer
+		byebug
+		customer.destroy
+		customer.deleted_at
+		redirect_to '/'
 	end
 
 	private
