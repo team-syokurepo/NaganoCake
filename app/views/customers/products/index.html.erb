@@ -1,0 +1,21 @@
+<div class="top-all">
+<div class="container">
+<div class="row">
+	<div class="col-xs-2">
+		<%= render 'homes/category_search' %>
+	</div>
+	<div class="col-xs-10">
+		<h2>商品一覧</h2><p>全○件</p>
+		<% @products.each do |product| %>
+			<% if product.status == true %>
+				<div class="col-xs-3">
+					<%= attachment_image_tag product, :image, :fill, 200, 150, fallback: "no_image.jpg" %>
+					<%= product.name %><br>
+					￥<%= product.price %>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+</div>
+</div>
+</div>
