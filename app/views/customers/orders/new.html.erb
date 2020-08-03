@@ -1,4 +1,4 @@
-<%= form_for(@order,url: {controller: 'customers/orders', action: 'confirm'} ) do |f| %>
+<%= form_with(model: @order, local: true, url: {action: 'confirm'}) do |f| %>
 <div class="container">
    <div class="row">
       <h2 class="col-xs3">注文情報入力</h2>
@@ -7,32 +7,39 @@
   <div class="row">
     <div class="col-xs1">
       <h3>支払い方法</h3>
-       <div class="form-check">
-        <input class="form-check-input" type="radio" name="radio1" id="radio1a" checked>
-        <label class="form-check-label" for="radio1a">クレジットカード</label>
-      </div>
+    </div>
 
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="radio1" id="radio1a" checked>
-        <label class="form-check-label" for="radio1a">銀行振込</label>
-      </div>
-
+        <div class="row">
+    <div class="col-lg-4 btn-group" data-toggle="buttons">
+      <label class="btn btn-outline-secondary active" style="width:50%">
+        <%= f.radio_button :how_to_pay, true, {checked: true} %> クレジットカード
+      </label>
+      <label class="btn btn-outline-secondary" style="width:50%">
+        <%= f.radio_button :how_to_pay, false, {} %> 銀行振込
+      </label>
+    </div>
+  </div>
 
  　  <div class="row">
     　 <h3 class="col-xs1">お届け先</h3>
-      　　<div class="form-check">
-        　<input class="form-check-input" type="radio" name="radio1" id="radio1a" checked>
-        <label class="form-check-label" for="radio1a">ご自身の住所</label>
-         </div>
+
+      　 <div class="row">
+    <p>
+      <label><%= f.radio_button :add, 1, checked: true, checked: "checked" %>ご自身の住所</label><br>
+      <%= @customer.postal_code %>
+      <%= @customer.address %>
+      <%= @customer.full_name %>
+    </p>
+  </div>
 
 
    	<div class="form-check">
-      <input class="form-check-input" type="radio" name="radio1" id="radio1a" checked>
+      <input class="form-check-input" type="radio" name="radio2" id="radio1a" checked>
       <label class="form-check-label" for="radio1a">登録済住所から選択</label>
     </div>
 
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="radio1" id="radio1a" checked>
+      <input class="form-check-input" type="radio" name="radio2" id="radio1a" checked>
       <label class="form-check-label" for="radio1a">新しいお届け先</label>
       <div class="field">
        <%= f.label :郵便番号（ハイフンなし）%>
@@ -40,16 +47,16 @@
         " %>
        </div>
        <div class="field">
-       <%= f.label :住所）%>
+       <%= f.label :住所%>
        <%= f.text_field :address, autofocus: true, autocomplete: "address
         " %>
        </div>
        <div class="field">
-        <%= f.label :宛名）%>
+        <%= f.label :宛名%>
         <%= f.text_field :name, autofocus: true, autocomplete: "name
         " %>
        </div>
-      <div class="btn btn btn-primary" >
+      <div>
       <%= f.submit "確認画面に進む" %>
       </div>
 

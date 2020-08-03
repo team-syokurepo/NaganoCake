@@ -21,6 +21,7 @@ class Customers::OrdersController < ApplicationController
 	end
 
 	def confirm
+		@customer = Customer.new(customer_params)
 	end
 
 	def thanks
