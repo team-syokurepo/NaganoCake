@@ -1,77 +1,103 @@
 <div class="top-all">
-<div class="continer">
+ <div class="continer">
   <div class="row">
-    <div class="offset-3">
-
- </div>
-    
+    <h2 class="registration-title col-xs-offset-2">新規会員登録</h2>
   </div>
-  
+    
+ 
+
+
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "customers/shared/error_messages", resource: resource %>
+          <div class="field col-xs-offset-1 ">
+          <%= f.label :名前　　　　　　　　　（姓）%>
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name form-contorol" %>
+          <%= f.label :　　　（名） %>
+          <%= f.text_field :first_name, autocomplete: "first_name form-contorol" %>
+        </div>
+          <div class="field col-xs-offset-1">
+            <%= f.label :フリガナ　　　　　　（セイ） %>
+            <%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %>
+            <%= f.label :　　（メイ） %>
+            <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
+      </div>
+          <div class="field col-xs-offset-1">
+            <%= f.label :メールアドレス %>
+            <%= f.email_field :email, autocomplete: "email", class: "form-contorol col-xs-offset-1" %>
+          </div>
+      <div class="field col-xs-offset-1">
+        <%= f.label :郵便番号（ハイフンなし） %>
+        <%= f.text_field :postal_code, autocomplete: "postal_code",class: "form-contorol col-xs-offset-1" %>
+      </div>
+      <div class="field col-xs-offset-1">
+        <%= f.label :住所 %>
+        <%= f.text_field :address, autocomplete: "address", class: "form-contorol col-xs-offset-2" %>
+      </div>
+
+      <div class="field col-xs-offset-1">
+        <%= f.label :電話番号（ハイフンなし） %>
+        <%= f.text_field :phone_number, autocomplete: "phone_number", class: "form-contorol col-xs-offset-2" %>
+      </div>
+
+      <div class="field col-xs-offset-1">
+        <%= f.label :パスワード（６文字以上） %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br/>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-contorol col-xs-offset-1" %>
+      </div>
+
+      <div class="field col-xs-offset-1">
+        <%= f.label :パスワード（確認用） %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-contorol col-xs-offset-1" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "新規登録", class: "registration-btn btn btn-success form-contorol col-xs-offset-3" %>
+      </div>
+    <% end %>
+    <h2 class="registration-title col-xs-offset-2">既に登録済みの方</h2>
+    <p class="col-xs-offset-3"><%= link_to "こちら", new_session_path(resource_name), class: "devise-link"%>　　からログインしてください。</p>
+    </div>
+  </div>
 </div>
 
 
-<h2 class="registration-title">新規会員登録</h2>
+
+
+<!-- Flex boxを使ってレイアウト調整を試す用です↓ 
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "customers/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :名前（姓）%>
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name
-" %>
-  </div>
+      <%= render "customers/shared/error_messages", resource: resource %>
+          <%= f.label :名前　　　　　　　　　（姓）%>
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+          <%= f.label :　　　（名） %>
+          <%= f.text_field :first_name, autocomplete: "first_name" %>
+            <%= f.label :フリガナ　　　　　　（セイ） %>
+            <%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %>
+            <%= f.label :　　（メイ） %>
+            <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
+            <%= f.label :メールアドレス %>
+            <%= f.email_field :email, autocomplete: "email", class: "" %>
+        <%= f.label :郵便番号（ハイフンなし） %>
+        <%= f.text_field :postal_code, autocomplete: "postal_code",class: "" %>
+        <%= f.label :住所 %>
+        <%= f.text_field :address, autocomplete: "address" %>
 
-  <div class="field">
-    <%= f.label :名 %>
-    <%= f.text_field :first_name, autocomplete: "first_name" %>
-  </div>
+        <%= f.label :電話番号（ハイフンなし） %>
+        <%= f.text_field :phone_number, autocomplete: "phone_number", class: "" %>
 
-  <div class="field">
-    <%= f.label :フリガナ（セイ） %>
-    <%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %>
-  </div>
+        <%= f.label :パスワード（６文字以上） %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br/>
+        <%= f.password_field :password, autocomplete: "new-password", class: "" %>
 
-  <div class="field">
-    <%= f.label :メイ %>
-    <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
-  </div>
+        <%= f.label :パスワード（確認用） %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "" %>
 
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :郵便番号 %>
-    <%= f.text_field :postal_code, autocomplete: "postal_code" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :住所 %>
-    <%= f.text_field :address, autocomplete: "address" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :電話番号 %>
-    <%= f.text_field :phone_number, autocomplete: "phone_number" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード（６文字以上） %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード（確認用） %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "新規登録", class: "btn btn-success" %>
-  </div>
-<% end %>
-<h2 class="registration-title">既に登録済みの方</h2>
-<p><%= link_to "こちら", new_session_path(resource_name), class: "devise-link"%>　　からログインしてください。</p>
-</div>
+      <div class="actions">
+        <%= f.submit "新規登録", class: "registration-btn btn btn-success form-contorol col-xs-offset-3" %>
+      </div>
+    <% end %>-->
