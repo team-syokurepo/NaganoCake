@@ -20,7 +20,7 @@
 			<%= f.label :商品説明　　　, class: "form-group" %>
 			<%= f.text_area :desctiption, class: "form-group" %><br>
 			<%= f.label :ジャンル　　　 %>
-			<%= f.select :category_id, {'プリン': 2}, class: "form-group" %><br>
+			<%= f.select :category_id, Category.all {|category| [category.name, category.id]}, class: "form-group" %><br>
 			<%= f.label :税抜価格　　　 %>
 			<%= f.text_field :price, class: "form-group" %>円<br>
 			<%= f.label :販売ステータス %>
