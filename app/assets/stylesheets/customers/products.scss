@@ -1,3 +1,24 @@
 // Place all the styles related to the customers/Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/*商品一覧ページ*/
+.product-box {
+	padding-bottom: 25px;
+}
+.product-name {
+	display: inline-block;
+	color: #112a63;
+	font-weight: bold;
+	padding: 10px 0;
+}
+/*商品詳細ページ*/
+.customer-product-show {
+	padding-top: 50px;
+}
+
+.customer-product-price {
+	font-size: 30px;
+}
+.show-quantity {
+	padding-bottom: 20px;
+}
