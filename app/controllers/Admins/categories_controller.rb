@@ -6,8 +6,12 @@ class Admins::CategoriesController < ApplicationController
 
 	def create
 		@category = Category.new(category_params)
-		@category.save
-		redirect_to request.referer
+		if @category != nil
+			@category.save
+			redirect_to request.referer
+		else
+			render :index
+		end
 	end
 
 	def edit
