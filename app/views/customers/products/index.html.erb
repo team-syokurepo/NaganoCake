@@ -13,11 +13,12 @@
 		<p>全<%= @products.count %>件</p>
 		<% end %>
 		<% @products.each do |product| %>
+		<% product_price = product.price * 1.08 %>
 			<% if product.status == true %>
 				<div class="col-xs-3 product-box">
 					<%= attachment_image_tag product, :image, :fill, 200, 150, fallback: "no_image.jpg" %>
 					<%= link_to product.name, customers_product_path(product), class: "product-name" %><br>
-					￥<%= product.price %>
+					￥<%= product_price.floor.to_s(:delimited) %>
 				</div>
 			<% end %>
 		<% end %>

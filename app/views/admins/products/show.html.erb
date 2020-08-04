@@ -21,8 +21,8 @@
 					<td style="border-top: none;" class="product"><%= Category.find(@product.category.id).name %></td>
 				</tr>
 				<tr>
-					<td style="border-top: none;">税抜価格</td>
-					<td style="border-top: none;" class="product"><%= @product.price %>円</td>
+					<td style="border-top: none;">税抜価格（税込価格）</td>
+					<td style="border-top: none;" class="product"><%= @product.price.to_s(:delimited) %>（<%= @product_price.floor.to_s(:delimited) %>）円</td>
 				</tr>
 				<tr>
 					<td style="border-top: none;">販売ステータス</td>
