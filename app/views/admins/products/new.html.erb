@@ -8,6 +8,7 @@
 <ul>
 	<% @product.errors.full_messages.each do |message| %>
 	<li><%= message %></li>
+</ul>
 	<% end %>
 	<% end %>
 		<%= form_for(@product, url: {controller: 'admins/products', action: 'create'}) do |f| %>
