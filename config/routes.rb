@@ -23,7 +23,7 @@ namespace :customers do
 	get "orders/thanks" => "orders#thanks"
 	resources :products, only: [:index, :show]
 	resources :cart_products, only: [:index, :create, :update, :destroy]
-	delete "cart_products/empty" => "cart_products#empty"
+	delete "cart_product/empty" => "cart_products#empty"
 	resources :address_lists, only: [:index, :create, :edit, :update, :destroy]
 end
 

@@ -5,7 +5,7 @@
 
 	<h2>ジャンル一覧・追加</h2>
 	<div class="genre-form">
-		<%= form_with model:@category,url: admins_categories_path do |form| %>
+		<%= form_with model:@category,url: admins_categories_path,local: true do |form| %>
 		<%= form.label :"ジャンル" %>
 		<%= form.text_field :name %>
 		<%= form.radio_button :valid_flag, :true, checked: true %>
@@ -15,6 +15,18 @@
 		<%= form.submit "追加",class: "btn btn-info" %>
 		<% end %>
 	</div>
+
+
+	<% if @category.errors.any? %>
+	  <div class="alert alert-warning">
+	    <ul>
+	    	<%= @category.errors.count %>件のエラー
+	      <% @category.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	    </ul>
+	  </div>
+　　<% end %>
 
 	<table class="table">
 		<thead style="background-color: #112a63;">
