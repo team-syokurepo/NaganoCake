@@ -3,14 +3,6 @@
 <div class="row">
 	<section class="product-new">
 		<h3>商品新規登録</h3>
-		<% if @product.errors.any? %>
-<p><%= pluralize(@product.errors.count, "error") %>perrors prohibited this obj from being saved:</p>
-<ul>
-	<% @product.errors.full_messages.each do |message| %>
-	<li><%= message %></li>
-</ul>
-	<% end %>
-	<% end %>
 		<%= form_for(@product, url: {controller: 'admins/products', action: 'create'}) do |f| %>
 		<div class="col-xs-4 col-xs-offset-2">
 			<%= f.attachment_field :image %>
