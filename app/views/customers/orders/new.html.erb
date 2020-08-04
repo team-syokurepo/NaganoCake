@@ -35,7 +35,7 @@
         <div class="row">
    	<p>
      <label><%= f.radio_button :add, 2 %>登録済住所から選択</label><br>登録済住所から選択</label>
-     住所録から持ってくる
+     <%= f.select :adress_id, Adress.all.map, {|adress| [adress, adress.id]}, class: "form-group" %><br>
     </p>
   </div>
        <div class="row">
@@ -79,7 +79,8 @@
     </div>
   </div>
   </div>
-<% end %>
+  <% end %>
+
 
 
 
