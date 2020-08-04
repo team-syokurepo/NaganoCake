@@ -1,11 +1,10 @@
 class Customers::CartProductsController < ApplicationController
 	def index
 		@cart_products = CartProduct.all
-		# @cart_product = @cart_products.product
 	end
 
 	def create
-		
+
 	end
 
 	def destroy
@@ -23,22 +22,12 @@ class Customers::CartProductsController < ApplicationController
 
 
 	def empty
-		cart_product = order.
-		CartProduct.destroy_all
+		cart_product = current_user.product
+		cart_product.destroy_all
 		redirect_to request.referer
 	end
 
 private
-
-def current_cart
-	# current_cart = CartProduct.find_by(id: session[cart_product_id])
-	# current_cart = CartProduct.create unless current_cart
-	# session[:cart_product_id] = current_cart.id
-	# current_cart
-	if session[:cart_product_id]
-		cart_product = Cart.find(session[:cart_product_id])
-end
-
 
 
 def cart_product_params
