@@ -19,7 +19,7 @@ namespace :customers do
 	get "customers/quit" => "customers#quit"
 	patch "customers/quit_update" => "customers#quit_update"
 	resources :orders, only: [:index, :show, :create, :new]
-	get "orders/confirm" => "orders#confirm"
+	post "orders/confirm" => "orders#confirm"
 	get "orders/thanks" => "orders#thanks"
 	resources :products, only: [:index, :show]
 	resources :cart_products, only: [:index, :create, :update, :destroy]

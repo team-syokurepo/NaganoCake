@@ -15,15 +15,17 @@ class Customers::OrdersController < ApplicationController
 
 	def create
 		@order = Order.new(params[:Order])
-	 if @oder.save
-		redirect_to customers_orders_confirm_path
 	 end
-	end
 
 	def confirm
-		@customer = Customer.new(customer_params)
+		@order = Order.new
 	end
 
 	def thanks
+	end
+
+	private
+	def order_params
+		params.require(:customer).permit(:customers_id, :name, :postal_code, :address)
 	end
 end
