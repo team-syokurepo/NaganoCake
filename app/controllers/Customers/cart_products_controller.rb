@@ -4,7 +4,7 @@ class Customers::CartProductsController < ApplicationController
 	end
 
 	def create
-	
+
 	end
 
 	def destroy
