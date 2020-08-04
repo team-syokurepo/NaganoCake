@@ -1,6 +1,8 @@
 class Customers::CartProductsController < ApplicationController
 	def index
 		@cart_products = CartProduct.all
+
+		# @cart_product = CartProduct.find(params[:id])
 	end
 
 	def create
@@ -15,9 +17,10 @@ class Customers::CartProductsController < ApplicationController
 	end
 
 	def update
-		cart_product = CartProduct.find(params[:product_id])
+		cart_product = CartProduct.find(params[:id])
 		cart_product.update(cart_product_params)
-		redirect_to request.referer
+		render "index"
+		# redirect_to request.referer
 	end
 
 
@@ -31,6 +34,6 @@ private
 
 
 def cart_product_params
-	params.require(:cart_product).permit(:cart_products.product)
+	params.require(:cart_product).permit(:quantity)
 end
 end
