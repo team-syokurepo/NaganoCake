@@ -6,25 +6,27 @@ class Admins::CustomersController < ApplicationController
 	end
 
 	def show
-		
+		@customer = Customer.find(params[:id])
 	end
 
 	def edit
-		
+		@customer = Customer.find(params[:id])
 	end
 
 	def update
-		
+		@customer = Customer.find(params[:id])
+        @customer.update(customer_params)
+        redirect_to admins_customer_path(@customer)
 	end
 
-private
+  private
     def customer_admin
        @customers = Customer.with_deleted
-       # if  current_customer.admin == false
-       #     redirect_to /
-       # else
-       #     render action: "index"
-       # end
+
     end
+
+    def customer_params
+	  params.require(:customer).permit(:deleted_at, :email, :last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :phone_number, :status)
+	end
 
 end

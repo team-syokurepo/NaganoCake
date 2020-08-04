@@ -8,7 +8,6 @@ class Customers::CartProductsController < ApplicationController
 	def create
 		cart_product =  CartProduct.new(cart_product_params)
 		cart_product.customer_id = current_customer.id
-		byebug
 		if cart_product.save
 			redirect_to customers_cart_products_path
 		else

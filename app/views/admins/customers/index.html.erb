@@ -1,12 +1,12 @@
-<div class="customers_customers">
+<div class="admins_customers">
 <div class="container">
     <div class="row">
       <h3 class="col-xs-offset-1">会員一覧</h3>
     </div>
 
+<!-- ページング追加！ -->
 
-
-<table class="table table-bordered">
+    <table class="table table-bordered">
           <tr>
             <th class="col-xs-2 customers_table_term">会員ID</th>
             <th class="customers_table_term">氏名</th>
@@ -15,23 +15,22 @@
           </tr>
 
           <% @customers.each do |customer| %>
-		  <tr>
-	        <td><%= customer.id %></td>
-	        <td><%= customer.last_name %><%= customer.first_name %></td>
-	　　　　 <td><%= customer.email %></td>
+			  <tr>
+		        <td><%= customer.id %></td>
+		        <!-- 後で下の書き方質問 -->
+		        <td><%= link_to customer.last_name, admins_customer_path(customer) %>
+		        	<%= link_to customer.first_name, admins_customer_path(customer) %>
+		        </td>
+		　　　　 <td><%= customer.email %></td>
 
-	        <% unless user.deleted_at? %>
-	          <td>有効</td>
-	        <% else %>
-	          <td>無効</td>
-	        <% end %>
-
-
-
-
-
-
-
+		        <% unless customer.deleted_at? %>
+		          <td>有効</td>
+		        <% else %>
+		          <td>無効</td>
+		        <% end %>
+		        </tr>
+          <% end %>
+	</table>
 
 </div>
 </div>
