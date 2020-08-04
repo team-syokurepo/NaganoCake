@@ -1,11 +1,10 @@
 class Customers::CartProductsController < ApplicationController
 	def index
 		@cart_products = CartProduct.all
-		# @cart_product = @cart_products.product
 	end
 
 	def create
-		
+	
 	end
 
 	def destroy
@@ -21,13 +20,16 @@ class Customers::CartProductsController < ApplicationController
 		redirect_to request.referer
 	end
 
-	
 
 	def empty
-		CartProduct.destroy_all
+		cart_product = current_user.product
+		cart_product.destroy_all
 		redirect_to request.referer
 	end
+
 private
+
+
 def cart_product_params
 	params.require(:cart_product).permit(:cart_products.product)
 end

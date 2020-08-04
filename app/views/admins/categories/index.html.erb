@@ -1,7 +1,10 @@
 <div class="top-all">
 <div class="continer">
+	<div class="row">
+		<div class="col-xs-offset-1 col-xs-4">
+
 	<h2>ジャンル一覧・追加</h2>
-	<div class="field">
+	<div class="genre-form">
 		<%= form_with model:@category,url: admins_categories_path do |form| %>
 		<%= form.label :"ジャンル" %>
 		<%= form.text_field :name %>
@@ -14,10 +17,10 @@
 	</div>
 
 	<table class="table">
-		<thead>
-			<tr>
-				<th>ジャンル</th>
-				<th>状態</th>
+		<thead style="background-color: #112a63;">
+			<tr style="color: #f1efe7;">
+				<th class="col-xs-3">ジャンル</th>
+				<th class="col-xs-3">状態</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -40,5 +43,8 @@
 
 		</tbody>
 	</table>
+	</div>
+		
+</div>
 </div>
 </div>
