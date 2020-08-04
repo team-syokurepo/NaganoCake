@@ -3,8 +3,8 @@
 		<h2>ショッピングカート</h2>
 		<%= link_to "カートを空にする", customers_cart_products_empty_path,method: :delete, class: "btn btn-danger"%>
 		<table class="table table-bordered">
-			<thead>
-				<tr>
+			<thead  style="background-color: #112a63">
+				<tr style="color: #f1efe7;">
 					<th>商品名</th>
 					<th>単価（税込）</th>
 					<th>数量</th>
@@ -12,18 +12,18 @@
 					<th></th>
 				</tr>
 			</thead>
-			<%= @cart_products.each do |cart_product| %>
 			<tbody>
+			<% @cart_products.each do |cart_product| %>
 				<tr>
 					<td>
-						<%= attachment_image_tag cart_product, :image,fill, 100,100 %>
-						<%= cart_product.products.name %>
+						<%= attachment_image_tag cart_product.product.image , :image,fill, 100,100 %>
+						<%= cart_product.product.name %>
 					</td>
 					<td>
 						<%= cart_product.products.price %>
 					</td>
 					<td>
-						<%= form_with model: product,method: :post, url: customers_cart_products do |f| %>
+						<%= form_with model: product,method: :patch, url: customers_cart_products do |f| %>
 						<%= f.number_field :cart_product.products.count %>
 						<%= f.submit "変更",class: "btn btn-info" %>
 						<% end %>
@@ -35,8 +35,9 @@
 						<%= link_to "削除する", customers_cart_product, method: :delete, class: "btn btn-danger" %>
 					</td>
 				</tr>
-			</tbody>
 			<% end %>
+
+			</tbody>
 		</table>
 		<%= link_to "買い物を続ける",root_path, class: "btn btn-primary"%>
 		<div>
@@ -45,6 +46,5 @@
 		<div>
 			00000
 		</div>
-		
 	<%= link_to "情報入力に進む",new_customers_order_path, class: "btn btn-warning"%>
 </div>
