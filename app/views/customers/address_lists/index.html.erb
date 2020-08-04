@@ -43,8 +43,8 @@
 	            <th><%= address_list.postal_code %></th>
 	            <th><%= address_list.address %></th>
 	            <th><%= address_list.name %></th>
-	            <th><%= link_to '編集する', edit_customers_address_list_path(@address_list_find), class: "btn btn-info" %>
-	            	<%= link_to '削除する', customers_address_list_path(@address_list_find), method: :delete, class: "btn btn-danger" %>
+	            <th><%= link_to '編集する', edit_customers_address_list_path(address_list), class: "btn btn-info" %>
+	            	<%= link_to '削除する', customers_address_list_path(address_list), method: :delete, class: "btn btn-danger" %>
 	            </th>
 	  		  </tr>
 	  	  <% end %>
