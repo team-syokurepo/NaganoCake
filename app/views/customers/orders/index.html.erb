@@ -1,0 +1,28 @@
+<div class="top-all">
+<div class="container">
+<div class="row">
+	<section class="cutomer-order-index">
+		<h3>注文履歴一覧</h3>
+		<table class="table table-bordered">
+		<thead style="background-color: #112a63;">
+			<tr style="color: #f1efe7;">
+				<th>注文日</th>
+				<th>配送先</th>
+				<th>支払金額</th>
+				<th>ステータス</th>
+				<th>注文詳細</th>
+			</tr>
+		</thead>
+		<% @orders.each do |order| %>
+		<tr>
+			<td><%= order.created_at %></td>
+			<td><%= order.address %></td>
+			<td><%= order.price %></td>
+			<td><%= order.status %></td>
+			<td><%= link_to "表示する", customers_order_path(order.id), class: "btn btn-primary" %></td>
+		</tr>
+		<% end %>
+	</table>
+</div>
+</div>
+</div>

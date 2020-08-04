@@ -1,0 +1,19 @@
+<div class="top-all">
+ <div class="continer">
+ 	<div class="row">
+ 	  <div class="col-xs-offset-1">
+			<h2>ジャンル編集</h2>
+			<%= form_with model:@category,url:admins_category_path(@category) do |form| %>
+			<%= form.label :"ジャンル" %>
+			<%= form.text_field :name %>
+			<%= form.radio_button :valid_flag, :true, checked: true %>
+			<%= form.label :valid_flag, "有効",{value: :valid} %>
+			<%= form.radio_button :valid_flag, :false %>
+			<%= form.label :valid_flag, "無効",{value: :invalid} %>
+			<%= form.submit "変更を保存する", class: "btn btn-info"%>
+			<%= link_to "削除する",admins_category_path(@category), method: :delete,class: "btn btn-danger" %>
+			<% end %>
+        </div>
+  	 </div>
+   </div>
+</div>

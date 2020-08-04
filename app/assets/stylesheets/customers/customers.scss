@@ -2,30 +2,46 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.login-title {
-	font-size: 16px;
-	background-color: #EDEDED;
-	display: inline-block;
-	padding: 0 15px;
+
+
+.customers_customers {
+	background-color: #f1efe7;
+	color: #112a63;
 }
 
-.registration-title {
-	font-size: 20px;
-	background-color: #EDEDED;
-	display: inline-block;
+.customers_table_term {
+	background-color: #112a63;
+	color: #f1efe7;
 }
 
-.login-btn {
-	width: 131px;
-	height: 35px;
-	background-color: #3D8BCD;
-	font-color: white;
+.quit_container {
+	width: 100%;
+	height: 500px;
 }
 
-.forget {
-	margin-bottom: 10px;
+.quit_text {
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 100px;
 }
 
-.not-yet {
-	margin-top: 20px;
+.quit_text_question {
+	font-size: x-large;
+	font-weight: bold;
 }
+
+.quit_text_sentence {
+	font-size: large;
+	padding-top: 20px;
+}
+
+.quit_buttons {
+	padding-top: 80px;
+    letter-spacing: 30px;
+}
+
+.quit_btn {
+    width: 200px;
+    letter-spacing: normal;
+}
+
