@@ -12,6 +12,11 @@ class Customer < ApplicationRecord
   validates :last_name_kana, presence: true
   validates :first_name_kana, presence: true
   validates :encrypted_password, presence: true
+  validates :postal_code, presence: true
+  validates :address, presence: true
+  validates :phone_number, presence: true
+  validates :email, presence: true, uniqueness: true
+
 
   acts_as_paranoid
 
