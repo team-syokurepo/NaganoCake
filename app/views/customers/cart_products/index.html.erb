@@ -2,7 +2,7 @@
 	<div class="container">
 		<h2>ショッピングカート</h2>
 		<div class="empty-btn">
-		<%= link_to "カートを空にする", customers_cart_product_empty_path,method: :delete, class: "btn btn-danger col-xs-offset-10"%>
+		<%= link_to "カートを空にする", customers_cart_product_empty_path,method: :delete,data: {confirm: "カートを空にしますか？"}, class: "btn btn-danger col-xs-offset-10"%>
 		</div>
 		<table class="table table-bordered">
 			<thead  style="background-color: #112a63">
@@ -53,14 +53,7 @@
 				</td>
 			</table>
 		</div>
-					<% if @cart_product =! nil%>
-
-		<div class="info-link col-xs-offset-5">
-			<%= link_to "情報入力に進む",new_customers_order_path, class: "btn btn-warning btn-lg"%>
-		</div>
-					<% else %>
-						<%= render "index"%>
-					<% end %>
-		
-
+			<div class="info-link col-xs-offset-5">
+				<%=link_to_if(@cart_products.exists?,"情報入力に進む", new_customers_order_path, class: "btn btn-warning btn-lg"){}%>
+			</div>
 </div>
