@@ -40,3 +40,13 @@
 	background-color: #112a63;
 	height: 100px;
 }
+/*KaminariのCSS*/
+.pagination>li>a {
+     /*枠線をなくす*/
+  color: #112a63;   /*文字の色を変える*/
+  background-color: #f1efe7;
+}
+.pagination>.active>a {
+  background: #112a63;     /*背景の色を変える*/
+}
+

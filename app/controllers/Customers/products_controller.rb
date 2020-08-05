@@ -3,10 +3,10 @@ class Customers::ProductsController < ApplicationController
 		@categories = Category.all
 		@category_id = params[:category_id]
 		if @category_id.blank?
-			@products = Product.all
+			@products = Product.page(params[:page])
 		else
 			@category = Category.find(@category_id)
-		    @products = Product.where(category_id: @category_id)
+		    @products = Product.where(category_id: @category_id).page(params[:page])
 		end
 	end
 
