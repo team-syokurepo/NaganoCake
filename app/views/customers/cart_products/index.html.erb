@@ -27,7 +27,7 @@
 						<%= product_price.floor.to_s(:delimited) %>
 					</td>
 					<td class="form-group col-xs-1">
-						<%= form_with model: cart_product, url: customers_cart_product_path(cart_product),local: true do |f| %>
+						<%= form_with model: cart_product, url: customers_product_cart_product_path(cart_product),local: true do |f| %>
 							<%= f.number_field :quantity,class: "form-control",min: 1%>
 							<%= f.submit "変更",class: " btn btn-info col-xs-offset-8" %>
 						<% end %>
