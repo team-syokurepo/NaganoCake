@@ -6,15 +6,15 @@ class Admins::CustomersController < ApplicationController
 	end
 
 	def show
-		@customer = Customer.find(params[:id])
+		@customer = Customer.with_deleted.find(params[:id])
 	end
 
 	def edit
-		@customer = Customer.find(params[:id])
+		@customer = Customer.with_deleted.find(params[:id])
 	end
 
 	def update
-		@customer = Customer.find(params[:id])
+		@customer = Customer.with_deleted.find(params[:id])
         @customer.update(customer_params)
         redirect_to admins_customer_path(@customer)
 	end
