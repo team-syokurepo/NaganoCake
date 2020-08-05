@@ -14,10 +14,10 @@ class Customers::CartProductsController < ApplicationController
 		if @cart_product.save
 			redirect_to customers_cart_products_path
 		else
-			@cart_product =  CartProduct.new
-			@product = Product.find(params[:id])
+			@product = Product.find(params[:product_id])
+			@product_price = @product.price * 1.08
 			@categories = Category.all
-			 render("coustomers/products/show")
+			 render("customers/products/show")
 		end
 	end
 
