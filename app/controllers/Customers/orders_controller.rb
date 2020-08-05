@@ -1,4 +1,5 @@
 class Customers::OrdersController < ApplicationController
+	before_action :authenticate_customer!
 	def index
 		@customer = current_customer
 		@orders = @customer.orders.page(params[:page])
@@ -18,15 +19,22 @@ class Customers::OrdersController < ApplicationController
 
 	def create
 		@order = Order.new(params[:Order])
-	 if @oder.save
-		redirect_to customers_orders_confirm_path
 	 end
-	end
 
 	def confirm
-		@customer = Customer.new(customer_params)
+		@order = Order.new(params[:Order])
+		@cart_products = current_customer.cart_products
+		@total_price = 0
+		@cart_products.each do |cart_product|
+			@total_price += cart_product.product.price * cart_product.quantity
+		end
 	end
 
 	def thanks
+	end
+
+	private
+	def order_params
+		params.require(:customer).permit(:customers_id, :name, :postal_code, :address)
 	end
 end

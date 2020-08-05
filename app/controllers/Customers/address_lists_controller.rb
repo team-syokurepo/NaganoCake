@@ -1,4 +1,5 @@
 class Customers::AddressListsController < ApplicationController
+	before_action :authenticate_customer!
 
 	def create
 	    @address_list = AddressList.new(address_list_params)

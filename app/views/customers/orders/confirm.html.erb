@@ -1,4 +1,40 @@
-<h2>注文情報確認</h2>
-  <%= form_for(model: @order, local: true) do |f| %>
+<div class="container">
+ <div class="row">
+  <h2>注文情報確認</h2>
+ </div>
+
+<% @cart_products.each do |cart_product| %>
+<% end %>
+
+
+<div class="d-none d-lg-block space">
+ <div class="row">
+  <div class="col-lg-5"><h4>商品名</h4></div>
+  <div class="col-lg-2"><h4>単価（税込）</h4></div>
+  <div class="col-lg-2"><h4>数量</h4></div>
+  <div class="col-lg-2"><h4>小計</h4></div>
+  </div>
+</div>
+
+
+  <div class="row">
+    <div class="col-lg-2">
+      <h3>支払方法</h3>
+    </div>
+    <div class="col-lg-4">
+
+    </div>
+  </div>
+
+ <div class="row">
+    <div class="col-lg-2">
+      <h3>お届け先</h3>
+    </div>
+    <div class="col-lg-4">
+
+    </div>
+  </div>
+
+
 
 

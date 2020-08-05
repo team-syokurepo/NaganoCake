@@ -1,4 +1,5 @@
 class Admins::CustomersController < ApplicationController
+	before_action :authenticate_admin!
  # before_action customer_admin, only: [:index, :customer_restore]
 
 	def index

@@ -1,6 +1,7 @@
 class Customers::CartProductsController < ApplicationController
+	before_action :authenticate_customer!
 	def index
-		@cart_products = current_customer.cart_products
+		@cart_products = current_customer.cart_products.page(params[:page]).per(5)
 		@total_price = 0
 		@cart_products.each do |cart_product|
 			@total_price += cart_product.product.price * cart_product.quantity
@@ -8,12 +9,15 @@ class Customers::CartProductsController < ApplicationController
 	end
 
 	def create
-		cart_product =  CartProduct.new(cart_product_params)
-		cart_product.customer_id = current_customer.id
-		if cart_product.save
+		@cart_product =  CartProduct.new(cart_product_params)
+		@cart_product.customer_id = current_customer.id
+		if @cart_product.save
 			redirect_to customers_cart_products_path
 		else
-			render("coustomers/products/show")
+			@cart_product =  CartProduct.new
+			@product = Product.find(params[:id])
+			@categories = Category.all
+			 render("coustomers/products/show")
 		end
 	end
 
