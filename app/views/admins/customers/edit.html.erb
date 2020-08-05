@@ -1,0 +1,59 @@
+<div class="admins_customers">
+<div class="container">
+    <div class="row">
+      <h3 class="col-xs-offset-1"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
+    </div>
+
+<!-- 警告文後で追加 -->
+
+    <%= form_with(model: @customer, url: admins_customer_path(@customer), local: true) do |f| %>
+	    <div class="row">
+            <h4 class="col-xs-2">顧客ID</h4>
+            <h4 class="col-xs-offset-3"><%= @customer.id %></h4>
+        </div>
+
+
+	    <div class="row">
+	    	<h5 class="col-xs-2">氏名</h5>
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" , class:"col-xs-offset-1" %>
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" , class:"col-xs-offset-1" %>
+        </div>
+        <div class="row">
+        	<h5 class="col-xs-2">フリガナ</h5>
+            <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" , class:"col-xs-offset-1" %>
+            <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" , class:"col-xs-offset-1" %>
+        </div>
+        <div class="row">
+        	<h5 class="col-xs-2">郵便番号</h5>
+            <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" , class:"col-xs-offset-1" %>
+        </div>
+        <div class="row">
+        	<h5 class="col-xs-2">住所</h5>
+            <%= f.text_field :address, autofocus: true, autocomplete: "address" , class:"col-xs-offset-1" %>
+        </div>
+        <div class="row">
+        	<h5 class="col-xs-2">電話番号</h5>
+            <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" , class:"col-xs-offset-1" %>
+        </div>
+        <div class="row">
+        	<h4 class="col-xs-2">メールアドレス</h4>
+            <%= f.text_field :email, autofocus: true, autocomplete: "email" , class:"col-xs-offset-1" %>
+        </div>
+
+        <div class="row">
+        	<h5 class="col-xs-2">会員ステータス</h5>
+        	<%= f.radio_button :deleted_at, :false, checked: true %>
+        	<%= f.label :deleted_at, "有効会員" %>
+			  <%= f.radio_button :deleted_at, Time.now %>
+			  <%= f.label :deleted_at, "退会済み" %>
+
+        </div>
+	  </table>
+
+      <div class="row">
+      	<%= f.submit '変更を保存する', class: "btn btn-info col-xs-offset-1" %>
+	  </div>
+
+    <% end %>
+</div>
+</div>

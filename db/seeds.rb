@@ -13,7 +13,9 @@ Category.create(name: "焼き菓子" , valid_flag: true)
 Category.create(name: "プリン" , valid_flag: true)
 Category.create(name: "キャンディ" , valid_flag: true)
 
-Admin.create!(email: "aaa@aaa" ,password: "1111111")
+
+admin = Admin.create!(email: "aaa@aaa" ,password: "1111111")
+
 
 
 
