@@ -1,5 +1,6 @@
 <div class="top-all">
  <div class="continer">
+
  	<div class="row">
  	  <div class="col-xs-offset-1">
 			<h2>ジャンル編集</h2>
@@ -14,6 +15,17 @@
 			<%= link_to "削除する",admins_category_path(@category), method: :delete,class: "btn btn-danger" %>
 			<% end %>
         </div>
+        <% if @category.errors.any? %>
+	  <div class="alert alert-warning">
+	    <ul>
+	    	<%= @category.errors.count %>件のエラー
+	      <% @category.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	    </ul>
+	  </div>
+　　<% end %>
   	 </div>
    </div>
 </div>
+
