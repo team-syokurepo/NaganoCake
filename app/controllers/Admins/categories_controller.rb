@@ -24,7 +24,6 @@ class Admins::CategoriesController < ApplicationController
 		if @category.update(category_params)
 			redirect_to admins_categories_path
 		else
-			# @category = Category.find(params[:id])
 			render :edit
 		end
 	end
