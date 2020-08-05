@@ -22,7 +22,7 @@
 			<p><span class="customer-product-price">￥<%= @product_price.floor.to_s(:delimited) %></span>（税込）</p>
 		</div>
 		<div class="col-xs-offset-7">
-			<%= form_with model: @cart_product, url: cart_products_path(@product), data: {remote: false} do |f| %>
+			<%= form_with model: @cart_product, url: customers_product_cart_products_path(@product), data: {remote: false} do |f| %>
 			<%= f.hidden_field :product_id, value: @product.id %>
 			<div class="show-quantity">
 				<%= f.number_field :quantity, min: 1 %><span>個</span>
