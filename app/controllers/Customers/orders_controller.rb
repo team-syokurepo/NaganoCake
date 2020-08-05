@@ -1,4 +1,5 @@
 class Customers::OrdersController < ApplicationController
+	before_action :authenticate_customer!
 	def index
 		@customer = current_customer
 		@orders = @customer.orders.page(params[:page])
