@@ -19,3 +19,4 @@ admin = Admin.create!(email: "aaa@aaa" ,password: "1111111")
 
 
 
+
