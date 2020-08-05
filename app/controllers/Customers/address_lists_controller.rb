@@ -18,11 +18,16 @@ class Customers::AddressListsController < ApplicationController
 	end
 
 	def edit
-		@address_list = current_customer.id
+		@address_list =  AddressList.find(params[:id])
 	end
 
 	def update
-		
+		@address_list = AddressList.find(params[:id])
+		if @address_list.update(address_list_params)
+           redirect_to customers_address_lists_path(@address_list), notice: "You have updated book successfully."
+        else
+           render "edit"
+        end
 	end
 
 	def destroy

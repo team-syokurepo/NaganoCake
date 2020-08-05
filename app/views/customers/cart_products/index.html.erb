@@ -1,7 +1,9 @@
 <div class="top-all">
 	<div class="container">
 		<h2>ショッピングカート</h2>
-		<%= link_to "カートを空にする", customers_cart_products_empty_path,method: :delete, class: "btn btn-danger"%>
+		<div class="empty-btn">
+		<%= link_to "カートを空にする", customers_cart_product_empty_path,method: :delete, class: "btn btn-danger col-xs-offset-10"%>
+		</div>
 		<table class="table table-bordered">
 			<thead  style="background-color: #112a63">
 				<tr style="color: #f1efe7;">
@@ -14,25 +16,27 @@
 			</thead>
 			<tbody>
 			<% @cart_products.each do |cart_product| %>
+			<% product_price = cart_product.product.price * 1.08 %>
 				<tr>
-					<td>
-						<%= attachment_image_tag cart_product.product.image , :image,fill, 100,100 %>
+					<td class="col-xs-3">
+						<%= attachment_image_tag cart_product.product, :image, :fill, 61, 41, fallback: "no_image.jpg" ,size:'61x41' %>
+
 						<%= cart_product.product.name %>
 					</td>
-					<td>
-						<%= cart_product.products.price %>
+					<td class="col-xs-2">
+						<%= product_price.floor.to_s(:delimited) %>
 					</td>
-					<td>
-						<%= form_with model: product,method: :patch, url: customers_cart_products do |f| %>
-						<%= f.number_field :cart_product.products.count %>
-						<%= f.submit "変更",class: "btn btn-info" %>
+					<td class="form-group col-xs-2">
+						<%= form_with model: cart_product, url: customers_cart_product_path(cart_product),local: true do |f| %>
+							<%= f.number_field :quantity,class: "form-control",min: 1%>
+							<%= f.submit "変更",class: " btn btn-info col-xs-offset-8" %>
 						<% end %>
 					</td>
-					<td>
-						<%= cart_product.products.price * cart_product.products.count %>
+					<td class="col-xs-2">
+						<%= (cart_product.product.price * cart_product.quantity).to_s(:delimited) %>
 					</td>
-					<td>
-						<%= link_to "削除する", customers_cart_product, method: :delete, class: "btn btn-danger" %>
+					<td class="col-xs-1">
+						<%= link_to "削除する", customers_cart_product_path(cart_product), method: :delete, class: "btn btn-danger" %>
 					</td>
 				</tr>
 			<% end %>
@@ -40,11 +44,23 @@
 			</tbody>
 		</table>
 		<%= link_to "買い物を続ける",root_path, class: "btn btn-primary"%>
-		<div>
-			<p>合計金額</p>
+
+		<div class="total-price-box col-xs-offset-10">
+			<table class="table table-bordered">
+				<td style="background-color: #112a63;color: #f1efe7;">合計金額</td>
+				<td>
+					<%= @total_price.to_s(:delimited) %>
+				</td>
+			</table>
 		</div>
-		<div>
-			00000
+					<% if @cart_product =! nil%>
+
+		<div class="info-link col-xs-offset-5">
+			<%= link_to "情報入力に進む",new_customers_order_path, class: "btn btn-warning btn-lg"%>
 		</div>
-	<%= link_to "情報入力に進む",new_customers_order_path, class: "btn btn-warning"%>
+					<% else %>
+						<%= render "index"%>
+					<% end %>
+		
+
 </div>

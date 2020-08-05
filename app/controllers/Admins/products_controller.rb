@@ -5,6 +5,7 @@ class Admins::ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
+		@product_price = @product.price * 1.08
 	end
 
 	def new
