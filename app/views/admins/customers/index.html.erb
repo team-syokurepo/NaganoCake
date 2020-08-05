@@ -1,7 +1,7 @@
 <div class="admins_customers">
 <div class="container">
     <div class="row">
-      <h3 class="col-xs-offset-1">会員一覧</h3>
+      <h3 class="col-xs-offset-1 row_top">会員一覧</h3>
     </div>
 
 <!-- ページング追加！ -->
@@ -24,13 +24,13 @@
 		　　　　 <td><%= customer.email %></td>
 
 		        <% unless customer.deleted_at? %>
-		          <td>有効</td>
+		          <td class="text-danger">有効</td>
 		        <% else %>
 		          <td>無効</td>
 		        <% end %>
 		        </tr>
           <% end %>
 	</table>
-
+  <%= paginate @customers %>
 </div>
 </div>

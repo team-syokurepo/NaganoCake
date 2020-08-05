@@ -4,7 +4,12 @@
 
 
 
-.customers_customers .address_lists {
+.customers_customers {
+	background-color: #f1efe7;
+	color: #112a63;
+}
+
+.address_lists {
 	background-color: #f1efe7;
 	color: #112a63;
 }
@@ -45,3 +50,12 @@
     letter-spacing: normal;
 }
 
+.row_top {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.row_list {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
