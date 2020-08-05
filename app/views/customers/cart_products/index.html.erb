@@ -16,23 +16,23 @@
 			</thead>
 			<tbody>
 			<% @cart_products.each do |cart_product| %>
-			<% product_price = cart_product.product.price * 1.08 %>
+			<% product_price = cart_product.product.price%>
 				<tr>
-					<td class="col-xs-3">
+					<td class="col-xs-2">
 						<%= attachment_image_tag cart_product.product, :image, :fill, 61, 41, fallback: "no_image.jpg" ,size:'61x41' %>
 
 						<%= cart_product.product.name %>
 					</td>
-					<td class="col-xs-2">
+					<td class="col-xs-1">
 						<%= product_price.floor.to_s(:delimited) %>
 					</td>
-					<td class="form-group col-xs-2">
+					<td class="form-group col-xs-1">
 						<%= form_with model: cart_product, url: customers_cart_product_path(cart_product),local: true do |f| %>
 							<%= f.number_field :quantity,class: "form-control",min: 1%>
 							<%= f.submit "変更",class: " btn btn-info col-xs-offset-8" %>
 						<% end %>
 					</td>
-					<td class="col-xs-2">
+					<td class="col-xs-1">
 						<%= (cart_product.product.price * cart_product.quantity).to_s(:delimited) %>
 					</td>
 					<td class="col-xs-1">
