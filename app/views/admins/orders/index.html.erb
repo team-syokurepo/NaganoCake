@@ -1,0 +1,35 @@
+<div class="admins_orders">
+<div class="container">
+    <div class="row">
+      <h3 class="col-xs-offset-1 row_top">注文履歴一覧</h3>
+    </div>
+
+
+    <table class="table table-bordered">
+          <tr>
+            <th class="col-xs-2 customers_table_term">購入日時</th>
+            <th class="customers_table_term">購入者</th>
+            <th class="customers_table_term">注文個数</th>
+            <th class="customers_table_term">注文ステータス</th>
+          </tr>
+
+          <% @orders.each do |order| %>
+			  <tr>
+		        <td><%= order.id %></td>
+		        <!-- 後で下の書き方質問 -->
+		        <td><%= link_to order.last_name, admins_customer_path(order) %>
+		        	<%= link_to order.first_name, admins_customer_path(order) %>
+		        </td>
+		　　　　 <td><%= order.email %></td>
+
+		        <% unless order.deleted_at? %>
+		          <td class="text-danger">有効</td>
+		        <% else %>
+		          <td>無効</td>
+		        <% end %>
+		        </tr>
+          <% end %>
+	</table>
+  <%= paginate @orders %>
+</div>
+</div>
