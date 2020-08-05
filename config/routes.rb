@@ -22,9 +22,9 @@ namespace :customers do
 	post "orders/confirm" => "orders#confirm"
 	get "orders/thanks" => "orders#thanks"
 	resources :products, only: [:index, :show] do
-		resources :cart_products, only: [:create, :update, :destroy]
+		resources :cart_products, only: [:create]
 	end
-	resources :cart_products, only: [:index]
+	resources :cart_products, only: [:index, :update, :destroy]
 	delete "cart_product/empty" => "cart_products#empty"
 	resources :address_lists, only: [:index, :create, :edit, :update, :destroy]
 end
