@@ -3,67 +3,67 @@
 		<div class="row">
 			<h3>注文履歴詳細</h3>
 				<table>
-					<% @orders.each do |order| %>
 
-					  <tr>
+					  <tr class="tabele-title">
 					    <th>購入者</th>
-					    <td class="col-xs-3">
-								<%= order.customer.name %>
+					    <td>
+								<%= @order.customer.first_name %>
+								<%= @order.customer.last_name %>
+
 					    </td>
 					  </tr>
-					    <tr>
+					    <tr class="tabele-title">
 					    <th>配送先</th>
-					    <td class="col-xs-3">
-								<%= order.address %>
+					    <td class="">
+								<%= @order.address %>
 					    </td>
 					  </tr>
-					  <tr>
+					  <tr class="tabele-title">
 					    <th>支払方法</th>
-					    <td class="col-xs-3">
-								<%= order.how_to_pay %>
+					    <td class="">
+								<%= @order.how_to_pay %>
 					    </td>
 					  </tr>
-					  <tr>
+					  <tr class="tabele-title">
 					    <th>注文ステータス</th>
-					    <td class="col-xs-3">
-					    	<%= form_with model:order, local: true do |f| %>
-							<%= f.select :status, Order.statuses.keys.to_a ,{} %>
-							<%= f.submit "変更",class: "btn btn-info" %>
+					    <td class="col-xs-6">
+					    	<%= form_with model: @order, url:admins_order_path,method: :patch, local: true do |f| %>
+							<%= f.select :status, [["入金待ち"], ["入金確認"], ["制作中"] ,["発送準備中"], ["発送済み"]] %>
+							<%= f.submit "変更",class: "order-update btn btn-info" %>
 							<% end %>
 					    </td>
-						<% end %>
-
 					  </tr>
 				</table>
-
-				<table class="table">
+				<div class="row">
+					
+				<table class="table table-order col-xs-8">
 					<thead style="background-color: #112a63;">
 						<tr style="color: #f1efe7;">
-							<th>商品名</th>
-							<th>単価（税込）</th>
-							<th>数量</th>
-							<th>小計</th>
-							<th>製作ステータス</th>
-							<th></th>
+							<th class="col-xs-">商品名</th>
+							<th class="col-xs-">単価（税込）</th>
+							<th class="col-xs-">数量</th>
+							<th class="col-xs-">小計</th>
+							<th class="col-xs-">製作ステータス</th>
+							<th class="col-xs-"></th>
 						</tr>
 					</thead>
 					<tbody>
-					<% @orders.each do |order| %>
+					<% @product_orders.each do |product_order| %>
 						<tr>
 							<td>
-								<%= order.product_order.customer.name%>
+								<%= product_order.product.name%>
 							</td>
 							<td>
-								<%= order.product_order.price.to_s(:delimited) %>
+								<%= product_order.price.to_s(:delimited) %>
 							</td>
 							<td>
-								<%= order.product_order.quantity %>
+								<%= product_order.quantity %>
 							</td>
 							<td>
-								<%= (order.product_order.price * order.product_order.quantity).to_s(:delimited) %>
+								<%= (product_order.price * product_order.quantity).to_s(:delimited) %>
 							</td>
 							<td>
-							<%= form_with model:product_order, local: true do |f| %>
+							<%= form_with model:product_order ,url: admins_product_order_update_path(@order,product_order),method: :patch, local: true do |f| %>
 							<%= f.select :status, ProductOrder.statuses.keys.to_a ,{} %>
 							</td>
 							<td>
@@ -74,29 +74,28 @@
 						<% end %>
 					</tbody>
 				</table>
-				<table>
-					<% @orders.each do |order| %>
+				<table class="tabele-title col-xs-5">
 					  <tr>
 					    <th>商品合計</th>
-					    <td class="col-xs-3">
-					    <%= order.price.to_s(:delimited) %>円
+					    <td class="col-xs-">
+					    <%= @order.price.to_s(:delimited) %>円
 						</td>
 					  </tr>
 					    <tr>
 					    <th>送料</th>
-					    <td class="col-xs-3">
-					    freight = 800
-					    <%= order.freight %>円
+					    <td class="col-xs-">
+					    <%= @order.freight %>円
 						</td>
 					  </tr>
 					  <tr>
 					    <th>請求金額合計</th>
-					    <td class="col-xs-3">
-					    <%= (order.price + oreder.freight).to_s(:delimited) %>円
+					    <td class="col-xs-">
+					    <%= (@order.price + @order.freight).to_s(:delimited) %>円
 						</td>
 					  </tr>
-					  <% end %>
 				</table>
+				</div>
+
 		</div>
 	</div>
 </div>
