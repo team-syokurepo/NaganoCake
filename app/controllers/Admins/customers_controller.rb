@@ -1,8 +1,9 @@
 class Admins::CustomersController < ApplicationController
+	before_action :authenticate_admin!
  # before_action customer_admin, only: [:index, :customer_restore]
 
 	def index
-		@customers = Customer.with_deleted
+		@customers = Customer.with_deleted.page(params[:page]).reverse_order
 	end
 
 	def show
@@ -15,8 +16,11 @@ class Admins::CustomersController < ApplicationController
 
 	def update
 		@customer = Customer.with_deleted.find(params[:id])
-        @customer.update(customer_params)
+       if @customer.update(customer_params)
         redirect_to admins_customer_path(@customer)
+       else
+        render :edit
+       end
 	end
 
   private
@@ -26,7 +30,7 @@ class Admins::CustomersController < ApplicationController
     end
 
     def customer_params
-	  params.require(:customer).permit(:deleted_at, :email, :last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :phone_number, :status)
+	  params.require(:customer).permit(:deleted_at, :email, :last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :phone_number)
 	end
 
 end

@@ -1,14 +1,19 @@
 class Customers::OrdersController < ApplicationController
+	before_action :authenticate_customer!
 	def index
 		@customer = current_customer
 		@orders = @customer.orders.page(params[:page])
 	end
 
 	def show
+<<<<<<< HEAD
+     @customer = current_customer
+=======
         @customer = current_customer
         @order = Order.find(params[:id])
         @total_price = @order.price + @order.freight
         @product_orders = ProductOrder.where(params[:@order])
+>>>>>>> 260b8c5dc186b0bf015d466a1f21c2114d0ef2be
 	end
 
 	def new

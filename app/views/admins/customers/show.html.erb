@@ -1,7 +1,7 @@
 <div class="admins_customers">
 <div class="container">
     <div class="row">
-      <h3 class="col-xs-offset-1"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
+      <h3 class="col-xs-offset-1 row_top"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
     </div>
 
       <table class="table table-bordered">
@@ -43,7 +43,7 @@
 
 	  </table>
 
-      <div class="row">
+      <div class="row row_top">
 		<%= link_to '編集する', edit_admins_customer_path(@customer), class: "btn btn-info" %>
 		<%= link_to '注文履歴一覧を見る', admins_order_path(@customer), class: "btn btn-info" %>
 	  </div>

@@ -21,15 +21,17 @@ namespace :customers do
 	resources :orders, only: [:index, :show, :create, :new]
 	post "orders/confirm" => "orders#confirm"
 	get "orders/thanks" => "orders#thanks"
-	resources :products, only: [:index, :show]
-	resources :cart_products, only: [:index, :create, :update, :destroy]
+	resources :products, only: [:index, :show] do
+		resources :cart_products, only: [:create]
+	end
+	resources :cart_products, only: [:index, :update, :destroy]
 	delete "cart_product/empty" => "cart_products#empty"
 	resources :address_lists, only: [:index, :create, :edit, :update, :destroy]
 end
 
 namespace :admins do
-	resources :orders, only: [:index, :show, :update]
 	get "orders/today" => "orders#today"
+	resources :orders, only: [:index, :show, :update]
 	patch "orders/:id/product_update" => "orders#product_update"
 	resources :products
 	resources :categories, only: [:index, :create, :edit, :update, :destroy]

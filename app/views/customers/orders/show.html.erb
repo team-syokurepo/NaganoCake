@@ -1,16 +1,16 @@
 <div class="top-all">
 <div class="container">
 <div class="row">
-	<h3>注文履歴詳細</h3>
-	<div class="col-xs-8">
-		<table class="table table-bordered">
+  <h3>注文履歴詳細</h3>
+  <div class="col-xs-8">
+    <table class="table table-bordered">
           <tr>
             <th class="col-xs-2 customers_table_term">注文日</th>
             <th><%= @order.created_at.strftime('%Y/%m/%d') %></th>
           </tr>
           <tr>
             <th class="customers_table_term">配送先</th>
-            <th><%= @order.address %></th>
+            <th><%= @order.postal_code %><br><%= @order.address %><br><%= @order.name %></th>
           </tr>
           <tr>
             <th class="customers_table_term">支払方法</th>
@@ -20,9 +20,9 @@
             <th class="customers_table_term">ステータス</th>
             <th><%= @order.status %></th>
           </tr>
-      	</table>
-  	</div>
-  	<div class="col-xs-4">
+        </table>
+    </div>
+    <div class="col-xs-4">
       <table class="table table-bordered">
           <tr>
             <th class="col-xs-4 customers_table_term">合計金額</th>
@@ -37,26 +37,26 @@
             <th>¥<%= @total_price.to_s(:delimited) %></th>
           </tr>
       </table>
- 	 </div>
+   </div>
       <table class="table table-bordered">
-		<thead style="background-color: #112a63;">
-			<tr style="color: #f1efe7;">
-				<th>商品</th>
-				<th>単価（税込）</th>
-				<th>個数</th>
-				<th>小計</th>
-			</tr>
-		</thead>
-		<% @product_orders.each do |product_order| %>
+    <thead style="background-color: #112a63;">
+      <tr style="color: #f1efe7;">
+        <th>商品</th>
+        <th>単価（税込）</th>
+        <th>個数</th>
+        <th>小計</th>
+      </tr>
+    </thead>
+    <% @product_orders.each do |product_order| %>
     <% product_price = Product.find(product_order.id).price * 1.08 %>
-		<tr>
-			<td><%= Product.find(product_order.id).name %></td>
-			<td>¥<%= product_price.floor.to_s(:delimited) %></td>
-			<td><%= product_order.quantity %></td>
-			<td>¥<%= product_order.price %></td>
-		</tr>
-		<% end %>
-	</table>
+    <tr>
+      <td><%= Product.find(product_order.id).name %></td>
+      <td>¥<%= product_price.floor.to_s(:delimited) %></td>
+      <td><%= product_order.quantity %></td>
+      <td>¥<%= product_order.price %></td>
+    </tr>
+    <% end %>
+  </table>
 </div>
 </div>
 </div>
