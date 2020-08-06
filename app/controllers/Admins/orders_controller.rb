@@ -1,14 +1,8 @@
 class Admins::OrdersController < ApplicationController
 	before_action :authenticate_admin!
 	def index
-		@orders = Order.page(params[:page])
-		# order = Order.find(params[:id])
-		# @product_orders = order.product_orders
-
+		@orders = Order.page(params[:page]).order(created_at: :asc)
 	end
-		# @order = Order.all
-		# product_order = ProductOrder.find(params[:product_order_id]
-		# @product_orders = ProductOrder.all
 
 	def show
 		@orders = Order.all

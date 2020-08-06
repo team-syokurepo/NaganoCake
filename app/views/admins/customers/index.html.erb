@@ -16,9 +16,7 @@
           <% @customers.each do |customer| %>
 			  <tr>
 		        <td><%= customer.id %></td>
-		        <!-- 後で下の書き方質問 -->
-		        <td><%= link_to customer.last_name, admins_customer_path(customer) %>
-		        	<%= link_to customer.first_name, admins_customer_path(customer) %>
+		        <td><%= link_to "#{customer.last_name}#{customer.first_name}", admins_customer_path(customer) %>
 		        </td>
 		　　　　 <td><%= customer.email %></td>
 
