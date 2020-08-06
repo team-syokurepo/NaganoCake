@@ -10,14 +10,8 @@
 	      <% @address_list.errors.full_messages.each do |message| %>
 		    <li><%= message %></li>
 	      <% end %>
-	<% end %>
 
-	<% if @address_list.errors.any? %>
-	  <p><%= pluralize(@address_list.errors.count, "error") %>perrors prohibited this obj from being saved:</p>
-	    <ul>
-	      <% @address_list.errors.full_messages.each do |message| %>
-		    <li><%= message %></li>
-	      <% end %>
+
 	<% end %>
 
 	<%= form_for([@customer,@address_list], url: {controller: 'customers/address_lists', action: 'create'}) do |f| %>
