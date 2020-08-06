@@ -8,6 +8,7 @@ class Admins::OrdersController < ApplicationController
 	end
 
 	def today
+		@today = Order.where(created_at: Time.zone.now.in_time_zone.all_day)
 	end
 
 	def update

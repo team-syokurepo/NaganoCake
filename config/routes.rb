@@ -30,8 +30,8 @@ namespace :customers do
 end
 
 namespace :admins do
-	resources :orders, only: [:index, :show, :update]
 	get "orders/today" => "orders#today"
+	resources :orders, only: [:index, :show, :update]
 	patch "orders/:id/product_update" => "orders#product_update"
 	resources :products
 	resources :categories, only: [:index, :create, :edit, :update, :destroy]
