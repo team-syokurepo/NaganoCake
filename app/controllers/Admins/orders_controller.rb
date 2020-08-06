@@ -5,15 +5,17 @@ class Admins::OrdersController < ApplicationController
 	end
 
 	def show
-		@orders = Order.all
+		@order = Order.find(params[:id])
+		@freight = 800
+		@product_orders = ProductOrder.all
 	end
 
 	def today
 	end
 
 	def update
-		order = Order.find(params[:id])
-		order.update(order_params)
+		@order = Order.find(params[:id])
+		@order.update(order_params)
 		redirect_to request.referer
 
 	end

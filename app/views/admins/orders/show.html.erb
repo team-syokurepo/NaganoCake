@@ -3,36 +3,35 @@
 		<div class="row">
 			<h3>注文履歴詳細</h3>
 				<table>
-					<% @orders.each do |order| %>
 
 					  <tr>
 					    <th>購入者</th>
 					    <td class="col-xs-3">
-								<%= order.customer.name %>
+								<%= @order.customer.first_name %>
+								<%= @order.customer.last_name %>
+
 					    </td>
 					  </tr>
 					    <tr>
 					    <th>配送先</th>
 					    <td class="col-xs-3">
-								<%= order.address %>
+								<%= @order.address %>
 					    </td>
 					  </tr>
 					  <tr>
 					    <th>支払方法</th>
 					    <td class="col-xs-3">
-								<%= order.how_to_pay %>
+								<%= @order.how_to_pay %>
 					    </td>
 					  </tr>
 					  <tr>
 					    <th>注文ステータス</th>
 					    <td class="col-xs-3">
-					    	<%= form_with model:order, local: true do |f| %>
+					    	<%= form_with url:admins_order_path,method: :patch, local: true do |f| %>
 							<%= f.select :status, Order.statuses.keys.to_a ,{} %>
 							<%= f.submit "変更",class: "btn btn-info" %>
 							<% end %>
 					    </td>
-						<% end %>
-
 					  </tr>
 				</table>
 
@@ -48,22 +47,22 @@
 						</tr>
 					</thead>
 					<tbody>
-					<% @orders.each do |order| %>
+					<% @product_orders.each do |product_order| %>
 						<tr>
 							<td>
-								<%= order.product_order.customer.name%>
+								<%= product_order.product.name%>
 							</td>
 							<td>
-								<%= order.product_order.price.to_s(:delimited) %>
+								<%= product_order.price.to_s(:delimited) %>
 							</td>
 							<td>
-								<%= order.product_order.quantity %>
+								<%= product_order.quantity %>
 							</td>
 							<td>
-								<%= (order.product_order.price * order.product_order.quantity).to_s(:delimited) %>
+								<%= (product_order.price * product_order.quantity).to_s(:delimited) %>
 							</td>
 							<td>
-							<%= form_with model:product_order, local: true do |f| %>
+							<%= form_with url: admins_path,method: :patch, local: true do |f| %>
 							<%= f.select :status, ProductOrder.statuses.keys.to_a ,{} %>
 							</td>
 							<td>
@@ -75,27 +74,24 @@
 					</tbody>
 				</table>
 				<table>
-					<% @orders.each do |order| %>
 					  <tr>
 					    <th>商品合計</th>
 					    <td class="col-xs-3">
-					    <%= order.price.to_s(:delimited) %>円
+					    <%= @order.price.to_s(:delimited) %>円
 						</td>
 					  </tr>
 					    <tr>
 					    <th>送料</th>
 					    <td class="col-xs-3">
-					    freight = 800
-					    <%= order.freight %>円
+					    <%= @order.freight %>円
 						</td>
 					  </tr>
 					  <tr>
 					    <th>請求金額合計</th>
 					    <td class="col-xs-3">
-					    <%= (order.price + oreder.freight).to_s(:delimited) %>円
+					    <%= (@order.price + @order.freight).to_s(:delimited) %>円
 						</td>
 					  </tr>
-					  <% end %>
 				</table>
 		</div>
 	</div>
