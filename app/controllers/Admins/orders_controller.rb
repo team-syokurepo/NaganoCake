@@ -2,16 +2,15 @@ class Admins::OrdersController < ApplicationController
 	before_action :authenticate_admin!
 	def index
 		@orders = Order.page(params[:page])
-
 	end
-		# @order = Order.all
-		# product_order = ProductOrder.find(params[:product_order_id]
-		# @product_orders = ProductOrder.all
 
 	def show
-		@order = Order.find(params[:id])
-		@freight = 800
-		@product_orders = ProductOrder.all
+		 if @order = Order.find_by(id: params[:id])
+		    @freight = 800
+		    @product_orders = ProductOrder.all
+		else
+		   redirect_to request.referer, notice: "未注文のお客様です！！"
+		end
 	end
 
 	def today

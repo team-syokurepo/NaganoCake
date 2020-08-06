@@ -21,9 +21,20 @@ class Customer < ApplicationRecord
   validates :phone_number, presence: true
   validates :email, presence: true, uniqueness: true
 
-
-
   acts_as_paranoid
 
+  def self.search(search,word)
+        if search == "forward_match"
+                        @customer = Customer.where("name LIKE?","#{word}%")
+        elsif search == "backward_match"
+                        @customer = Customer.where("name LIKE?","%#{word}")
+        elsif search == "perfect_match"
+                        @customer = Customer.where("#{word}")
+        elsif search == "partial_match"
+                        @customer = Customer.where("name LIKE?","%#{word}%")
+        else
+                        @customer = Customer.all
+         end
+  end
 
 end
