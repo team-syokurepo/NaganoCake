@@ -22,16 +22,18 @@ class Admins::OrdersController < ApplicationController
 	end
 
 	def product_update
-		product_order = ProductOrder(params[:id])
+		product_order = ProductOrder.find(params[:id])
 		product_order.update(product_order_params)
 		redirect_to request.referer
 	end
 
 
 	private
+
 	def order_params
-		params.require(:order).permit(:freight, :status, :postal_code, :address, :name, :how_to_pay, :price)
+		params.require(:order).permit(:status)
 	end
+
 
 	def product_order_params
 		params.require(:product_order).permit(:status)
