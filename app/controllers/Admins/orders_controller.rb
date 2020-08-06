@@ -2,7 +2,11 @@ class Admins::OrdersController < ApplicationController
 	before_action :authenticate_admin!
 	def index
 		@orders = Order.page(params[:page])
+
 	end
+		# @order = Order.all
+		# product_order = ProductOrder.find(params[:product_order_id]
+		# @product_orders = ProductOrder.all
 
 	def show
 		@order = Order.find(params[:id])
@@ -31,11 +35,14 @@ class Admins::OrdersController < ApplicationController
 	private
 
 	def order_params
-		params.require(:order).permit(:status)
+
+		params.require(:order).permit(:freight, :status, :postal_code, :address, :name, :how_to_pay, :price, :product_order_id)
+
 	end
 
 
 	def product_order_params
-		params.require(:product_order).permit(:status)
+		params.require(:product_order).permit(:status, :product_order_id, :product_id)
 	end
+
 end

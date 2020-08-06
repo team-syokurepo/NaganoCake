@@ -25,6 +25,9 @@
       </a>
     </div>
     <div class="collapse navbar-collapse" id="navbarEexample2">
+      <% if customer_signed_in? %>
+        <p class="navbar-text header-name" style="margin-top: 50px;">ようこそ<span class="header-name2"><%= current_customer.last_name %><%= current_customer.first_name %></span>さん!</p>
+      <% end %>
       <ul class="nav navbar-nav navbar-right nav-icon">
         <% if customer_signed_in? %>
           <li><%= link_to "マイページ", customers_customers_path, class: "btn btn-style menu-btn" %></li>

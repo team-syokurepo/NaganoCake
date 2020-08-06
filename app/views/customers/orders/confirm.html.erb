@@ -3,38 +3,57 @@
   <h2>注文情報確認</h2>
  </div>
 
-<% @cart_products.each do |cart_product| %>
-<% end %>
-
-
-<div class="d-none d-lg-block space">
- <div class="row">
-  <div class="col-lg-5"><h4>商品名</h4></div>
-  <div class="col-lg-2"><h4>単価（税込）</h4></div>
-  <div class="col-lg-2"><h4>数量</h4></div>
-  <div class="col-lg-2"><h4>小計</h4></div>
+ <% @cart_products.each do |cart_product| %>
+  <% product_price = cart_product.product.price * 1.08 %>
+  <div class="d-none d-lg-block space">
+   <div class="row">
+    <div class="col-lg-5"><h4>商品名</h4></div>
+    <div class="col-lg-2"><h4>単価（税込）</h4></div>
+    <div class="col-lg-2"><h4>数量</h4></div>
+    <div class="col-lg-2"><h4>小計</h4></div>
+   </div>
+   <div class="col-lg-5">
+    <%= cart_product.product.name %>
+   </div>
+    <div class="col-lg-2">
+    <%= cart_product.product.price %>
+    </div>
+    <div class="col-lg-2">
+     <%= cart_product.quantity %>
+    </div>
+    <div class="col-lg-2">
+     <%= cart_product.product.price * cart_product.quantity %>
+     </div>
+  <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+
+      <div class="row">
+        <div class="col-lg-3">
+          <strong>商品合計</strong>
+        </div>
+        <div class="col-lg-3">
+        商品合計金額をここに表示する
 
 
   <div class="row">
-    <div class="col-lg-2">
-      <h3>支払方法</h3>
-    </div>
     <div class="col-lg-4">
-
+      <h3>支払方法</h3>
+      <%= @order.how_to_pay %>
     </div>
   </div>
+
 
  <div class="row">
-    <div class="col-lg-2">
-      <h3>お届け先</h3>
-    </div>
     <div class="col-lg-4">
+      <h3>お届け先</h3>
+      <%= @order.postal_code %>
+      <%= @order.address %>
 
     </div>
   </div>
 
-
-
-
+    </div>
+  </div>
