@@ -17,9 +17,9 @@
 
 # admin = Admin.create!(email: "aaa@aaa" ,password: "1111111")
 
-
-
-
+# order = Order.create!(freight: 100, status:4, postal_code: 000, address: "テスト", name: "テスト", how_to_pay: 0, price: 100, customer_id: 1)
+# product_order = ProductOrder.create!(quantity: 1, price: 100, status: 3, product_id: 1, order_id: 1)
+# product = Product.create!(name: "サンプル", price: "100", desctiption: "100", category_id: 1)
 
 
 

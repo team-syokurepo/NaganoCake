@@ -14,11 +14,17 @@
           </tr>
 
 		  <% @orders.each do |order| %>
+		      <% order_id = order.id %>
+		      <% product_orders = ProductOrder.where(order_id: order_id) %>
+			  <% total_quantity = 0 %>
+			  <% product_orders.each do |product_order| %>
+				<% total_quantity += product_order.quantity %>
+			  <% end %>
 			  <tr>
 		        <td><%= link_to order.created_at, admins_order_path(order) %>
 		        </td>
 		        <td><%= order.name %></td>
-		　　　　 <td><%= order.product_order.quantity %></td>
+				<td><%= total_quantity %></td>
 		        <td><%= order.status %></td>
 		      </tr>
           <% end %>
