@@ -21,8 +21,9 @@ class Customers::OrdersController < ApplicationController
 	 end
 
 	def confirm
-		@order = Order.new(params[:Order])
+		@order = Order.new(order_params)
 		@cart_products = current_customer.cart_products
+		byebug
 		@total_price = 0
 		@cart_products.each do |cart_product|
 			@total_price += cart_product.product.price * cart_product.quantity
@@ -34,6 +35,9 @@ class Customers::OrdersController < ApplicationController
 
 	private
 	def order_params
-		params.require(:customer).permit(:customers_id, :name, :postal_code, :address)
+		params.require(:order).permit(:customer_id, :name, :postal_code, :address, :how_to_pay, :status, :price)
+	end
+	def cart_product_params
+		params.require(:cart_product).permit(:product_id, :quantity, :customer_id)
 	end
 end

@@ -11,10 +11,10 @@
   </div>
 
         <div class="row">
-         <p><%= f.radio_button :how_to_pay, true, {checked: true} %> クレジットカード</p>
+         <p><%= f.radio_button :how_to_pay, 0, {checked: true} %> クレジットカード</p>
        </div>
        <div class="row">
-          <p><%= f.radio_button :how_to_pay, false, {} %> 銀行振込</p>
+          <p><%= f.radio_button :how_to_pay, 1, {} %> 銀行振込</p>
         </div>
 
 
