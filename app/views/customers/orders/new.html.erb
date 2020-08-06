@@ -33,8 +33,10 @@
   </div>
 
         <div class="row">
+
    	<p>
      <label><%= f.radio_button :address,:disabled %>登録済住所から選択</label><br>登録済住所から選択</label>
+
      <div class="select">
      <%= f.select :address, AddressList.all.map {|address| [address.postal_code,address.address,address.name, address.id]}, class: "form-group" %><br>
     </p>
