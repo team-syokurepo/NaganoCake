@@ -13,6 +13,7 @@
             <th class="customers_table_term">注文ステータス</th>
           </tr>
 
+
 		  <% @orders.each do |order| %>
 		      <% order_id = order.id %>
 		      <% product_orders = ProductOrder.where(order_id: order_id) %>

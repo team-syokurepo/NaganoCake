@@ -24,7 +24,6 @@ class Customers::OrdersController < ApplicationController
 	def confirm
 		@order = Order.new(order_params)
 		@cart_products = current_customer.cart_products
-		byebug
 		@total_price = 0
 		@cart_products.each do |cart_product|
 			@total_price += cart_product.product.price * cart_product.quantity
