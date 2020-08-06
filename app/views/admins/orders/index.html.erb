@@ -13,21 +13,20 @@
             <th class="customers_table_term">注文ステータス</th>
           </tr>
 
-          <% @orders.each do |order| %>
+		  <% @orders.each do |order| %>
+		      <% order_id = order.id %>
+		      <% product_orders = ProductOrder.where(order_id: order_id) %>
+			  <% total_quantity = 0 %>
+			  <% product_orders.each do |product_order| %>
+				<% total_quantity += product_order.quantity %>
+			  <% end %>
 			  <tr>
-		        <td><%= order.id %></td>
-		        <!-- 後で下の書き方質問 -->
-		        <td><%= link_to order.last_name, admins_customer_path(order) %>
-		        	<%= link_to order.first_name, admins_customer_path(order) %>
+		        <td><%= link_to order.created_at, admins_order_path(order) %>
 		        </td>
-		　　　　 <td><%= order.email %></td>
-
-		        <% unless order.deleted_at? %>
-		          <td class="text-danger">有効</td>
-		        <% else %>
-		          <td>無効</td>
-		        <% end %>
-		        </tr>
+		        <td><%= order.name %></td>
+				<td><%= total_quantity %></td>
+		        <td><%= order.status %></td>
+		      </tr>
           <% end %>
 	</table>
   <%= paginate @orders %>
