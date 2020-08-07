@@ -25,13 +25,13 @@ class Customer < ApplicationRecord
 
   def self.search(search,word)
         if search == "forward_match"
-                        @customer = Customer.where("name LIKE?","#{word}%")
+                        @customer = Customer.where(['last_name LIKE ? OR first_name LIKE ? OR last_name_kana LIKE ? OR first_name_kana LIKE ?', "#{word}%","#{word}%", "#{word}%", "#{word}%"])
         elsif search == "backward_match"
-                        @customer = Customer.where("name LIKE?","%#{word}")
+                        @customer = Customer.where(['last_name LIKE ? OR first_name LIKE ? OR last_name_kana LIKE ? OR first_name_kana LIKE ?', "%#{word}","%#{word}", "%#{word}", "%#{word}"])
         elsif search == "perfect_match"
                         @customer = Customer.where("#{word}")
         elsif search == "partial_match"
-                        @customer = Customer.where("name LIKE?","%#{word}%")
+                        @customer = Customer.where(['last_name LIKE ? OR first_name LIKE ? OR last_name_kana LIKE ? OR first_name_kana LIKE ?', "%#{word}%","%#{word}%", "%#{word}%", "%#{word}%"])
         else
                         @customer = Customer.all
          end
