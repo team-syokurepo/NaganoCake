@@ -9,16 +9,10 @@ class Product < ApplicationRecord
 	 validates :price, {presence: true}
 
 	  def self.search(search,word)
-        if search == "forward_match"
-                        @product = Product.where("name LIKE?","#{word}%")
-        elsif search == "backward_match"
-                        @product = Product.where("name LIKE?","%#{word}")
-        elsif search == "perfect_match"
-                        @product = Product.where("#{word}")
-        elsif search == "partial_match"
-                        @product = Product.where("name LIKE?","%#{word}%")
+        if search == "partial_match"
+           @product = Product.where("name LIKE ? OR status LIKE ?","%#{word}%","%#{word}")
         else
-                        @product = Product.all
+           @product = Product.all
          end
        end
 end
