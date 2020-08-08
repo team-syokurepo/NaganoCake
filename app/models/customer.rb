@@ -21,9 +21,14 @@ class Customer < ApplicationRecord
   validates :phone_number, presence: true
   validates :email, presence: true, uniqueness: true
 
-
-
   acts_as_paranoid
 
+  def self.search(search,word)
+        if search == "partial_match"
+           @customer = Customer.where(['last_name LIKE ? OR first_name LIKE ? OR last_name_kana LIKE ? OR first_name_kana LIKE ?', "%#{word}%","%#{word}%", "%#{word}%", "%#{word}%"])
+        else
+           @customer = Customer.all
+        end
+  end
 
 end

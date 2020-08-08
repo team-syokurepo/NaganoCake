@@ -1,9 +1,8 @@
 class Admins::CustomersController < ApplicationController
 	before_action :authenticate_admin!
- # before_action customer_admin, only: [:index, :customer_restore]
 
 	def index
-		@customers = Customer.with_deleted.page(params[:page]).reverse_order
+		@customers = Customer.with_deleted.page(params[:page]).order("id ASC")
 	end
 
 	def show

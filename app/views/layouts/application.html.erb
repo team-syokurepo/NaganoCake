@@ -40,6 +40,24 @@
           <li><%= link_to "注文履歴一覧", admins_orders_path, class: "btn btn-style menu-btn" %></li>
           <li ><%= link_to "ジャンル一覧", admins_categories_path, class: "btn btn-style menu-btn" %></li>
           <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: "btn btn-warning btn-style" %></li>
+
+           <!-- 検索form -->
+           <form class="form-inline col-xs-offset-4", style="color: #112a63, margin-top: 5px;">
+             <div class="form-group">
+              <%= form_tag(search_path, method: :get) do %>
+                <%= select_tag 'range' ,options_for_select([['---選択してください---', ''], ['Customer', '1'], ['Product', '2']]), class: 'form-control input-sm' %>
+                <div class="input-group">
+                    <%= text_field_tag (:word), "", {class: "form-control input-sm"} %>
+                    <span class="input-group-btn">
+                    <%= button_tag( class: "btn btn-default glyphicon glyphicon-search input-sm") do %>
+                    <% end %>
+                  </span>
+                </div>
+              <% end %>
+            </div>
+           </form>
+           <!-- 検索form -->
+
         <% else %>
           <li><%= link_to "About", home_about_path, class: "btn btn-style menu-btn" %></li>
           <li ><%= link_to "商品一覧", customers_products_path, class: "btn btn-style menu-btn" %></li>
