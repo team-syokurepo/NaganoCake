@@ -1,5 +1,4 @@
 class Customers::OrdersController < ApplicationController
-	before_action :authenticate_customer!
 	def index
 		@customer = current_customer
 		@orders = @customer.orders.page(params[:page])
@@ -28,7 +27,21 @@ class Customers::OrdersController < ApplicationController
 		@cart_products.each do |cart_product|
 			@total_price += cart_product.product.price * cart_product.quantity
 		end
+		if request.post? then
+		if params["r1"] then
+			@order.postal_code = current_customer.postal_code
+			@order.address = current_customer.address
+			@order.name = current_customer.first_name + current_customer.last_name
+		elsif params["r2"] then
+			id = @order.address
+			@order.postal_code = AddressList.find(id).postal_code
+			@order.address = AddressList.find(id).address
+			@order.name = AddressList.find(id).name
+
 	end
+end
+end
+
 
 	def thanks
 	end
