@@ -18,7 +18,8 @@
               </tr>
       </thead>
       <tbody>
-         <% @product.each do |product| %>
+
+         <% @products.each do |product| %>
            <tr>
               <td><%= product.id %></td>
               <td><%= link_to product.name, admins_product_path(product.id) %></td>
@@ -50,7 +51,8 @@
     </thead>
 
     <tbody>
-      <% @customer.each do |customer| %>
+
+      <% @customers.each do |customer| %>
        <tr>
             <td><%= customer.id %></td>
             <td><%= link_to "#{customer.last_name}#{customer.first_name}", admins_customer_path(customer) %>

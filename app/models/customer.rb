@@ -23,8 +23,9 @@ class Customer < ApplicationRecord
 
   acts_as_paranoid
 
-  def self.search(search,word)
-        if search == "partial_match"
+
+  def Customer.search(range,word)
+        if range == "1"
            @customer = Customer.where(['last_name LIKE ? OR first_name LIKE ? OR last_name_kana LIKE ? OR first_name_kana LIKE ?', "%#{word}%","%#{word}%", "%#{word}%", "%#{word}%"])
         else
            @customer = Customer.all
