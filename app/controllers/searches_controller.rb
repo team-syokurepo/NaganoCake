@@ -1,13 +1,15 @@
 class SearchesController < ApplicationController
+  before_action :authenticate_admin!
    def search
     @range = params[:range]
-    search = params[:search]
-    word = params[:word]
+    @word = params[:word]
 
       if @range == '1'
-         @customer = Customer.search(search,word)
+         @customers = Customer.search(@range, @word)
+      elsif @range == '2'
+       	 @products = Product.search(@range, @word)
       else
-       	 @product = Product.search(search,word)
+        redirect_to request.referer
       end
     end
 

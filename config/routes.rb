@@ -13,7 +13,6 @@ root to: 'homes#top'
 get "home/about" => "homes#about"
 get 'search' => 'searches#search'
 
-
 namespace :customers do
 	resource :customers, only: [:show, :edit, :update, :destroy]
 	get "customers/quit" => "customers#quit"
