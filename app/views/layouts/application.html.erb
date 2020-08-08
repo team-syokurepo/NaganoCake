@@ -43,13 +43,13 @@
 
            <!-- 検索form -->
            <form class="form-inline col-xs-offset-4", style="color: #112a63, margin-top: 5px;">
-             <div class="form-group">
+             <div class="form-group search-nav">
               <%= form_tag(search_path, method: :get) do %>
                 <%= select_tag 'range' ,options_for_select([['---選択してください---', ''], ['Customer', '1'], ['Product', '2']]), class: 'form-control input-sm' %>
                 <div class="input-group">
                     <%= text_field_tag (:word), "", {class: "form-control input-sm"} %>
                     <span class="input-group-btn">
-                    <%= button_tag( class: "btn btn-default glyphicon glyphicon-search input-sm") do %>
+                    <%= button_tag( class: "btn btn-default glyphicon glyphicon-search input-sm",style: "top: 0;") do %>
                     <% end %>
                   </span>
                 </div>

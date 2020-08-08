@@ -16,3 +16,13 @@
 .today-count {
 	font-size: 30px;
 }
+
+/*Order/showのCSS*/
+.price-position {
+	position: relative;
+}
+.order-show-price {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}

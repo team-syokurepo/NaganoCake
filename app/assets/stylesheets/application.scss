@@ -15,12 +15,18 @@
  */
  @import "bootstrap-sprockets";  /*ここを追加*/
  @import "bootstrap";            /*ここを追加*/
- /*ヘッダーとフッターのCSS*/
+ /*bodyのCSS*/
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
+/*body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}*/
+/*ヘッダーとフッターのCSS*/
 .nav-height{
 	height: 140px;
 	background-color: #112a63;
@@ -45,11 +51,15 @@
 }
 .footer {
 	background-color: #112a63;
+	/*margin-top: auto;*/
 	height: 100px;
+}
+/*検索機能のCSS*/
+.search-nav {
+	margin-top: 10px;
 }
 /*KaminariのCSS*/
 .pagination>li>a {
-     /*枠線をなくす*/
   color: #112a63;   /*文字の色を変える*/
   background-color: #f1efe7;
 }
