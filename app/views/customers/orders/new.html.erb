@@ -34,9 +34,12 @@
   </div>
 
         <div class="row">
+
    	<p>
+
      <%= radio_button_tag("r2", "1") %>
      <%= label_tag("r1_2","登録済住所から選択") %>
+
      <div class="select">
      <%= f.select :address, AddressList.all.map {|address| [address.postal_code,address.address,address.name, address.id]}, class: "form-group" %><br>
     </p>

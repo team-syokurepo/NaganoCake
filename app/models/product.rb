@@ -7,4 +7,12 @@ class Product < ApplicationRecord
 	 validates :desctiption, {presence: true}
 	 validates :category_id, {presence: true}
 	 validates :price, {presence: true}
+
+	  def self.search(search,word)
+        if search == "partial_match"
+           @product = Product.where("name LIKE ? OR status LIKE ?","%#{word}%","%#{word}")
+        else
+           @product = Product.all
+         end
+       end
 end
