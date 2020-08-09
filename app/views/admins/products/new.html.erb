@@ -13,7 +13,8 @@
 		<h3>商品新規登録</h3>
 		<%= form_for(@product, url: {controller: 'admins/products', action: 'create'}) do |f| %>
 		<div class="col-xs-4 col-xs-offset-2">
-			<%= f.attachment_field :image %>
+			<%= attachment_image_tag @product, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150", class: "product-image" %>
+			<%= f.attachment_field :image, id: "new-image" %>
 		</div>
 		<div class="col-xs-6">
 			<%= f.label :商品名　　　　 %>
