@@ -38,7 +38,7 @@
    	<p>
 
      <%= radio_button_tag("r2", "1") %>
-     <%= label_tag("r1_2","登録済住所から選択") %>
+     <%= label_tag("r2_1","登録済住所から選択") %>
 
      <div class="select">
      <%= f.select :address, AddressList.all.map {|address| [address.postal_code,address.address,address.name, address.id]}, class: "form-group" %><br>
@@ -47,7 +47,7 @@
   </div>
        <div class="row">
       <p><%= radio_button_tag("r3","1")  %></p>
-      <%= label_tag("r1_3","新しいお届け先") %>
+      <%= label_tag("r3_1","新しいお届け先") %>
     </div>
 
   <div class="row">
@@ -86,6 +86,7 @@
   </div>
   </div>
   <% end %>
+</p>
 
 
 
