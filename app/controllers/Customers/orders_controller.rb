@@ -19,7 +19,19 @@ class Customers::OrdersController < ApplicationController
 	end
 
 	def create
-		@order = Order.new(params[:Order])
+		@order = Order.new(order_params)
+		@order.save
+		@cart_products = current_customer.cart_products.all
+		 @cart_products.each do |cart_product|
+			@order_products = @order.product_orders.new
+			@order_products.product_id = cart_product.product.id
+			# @order_products.name = cart_product.product.name
+			@order_products.price = cart_product.product.price * 1.08
+			@order_products.quantity = cart_product.quantity
+			@order_products.save
+			current_customer.cart_products.destroy_all
+	     end
+	     redirect_to  customers_orders_thanks_path
 	 end
 
 	def confirm
@@ -28,7 +40,7 @@ class Customers::OrdersController < ApplicationController
 		@freight = 800
 		@total_price = 0
 		@cart_products.each do |cart_product|
-			@total_price += cart_product.product.price * cart_product.quantity
+			@total_price += cart_product.product.price * cart_product.quantity * 1.08
 		end
 		if request.post? then
 		if params[:order][:address_option] == "A" then
@@ -51,7 +63,7 @@ end
 
 	private
 	def order_params
-		params.require(:order).permit(:customer_id, :name, :postal_code, :address, :how_to_pay, :status, :price)
+		params.require(:order).permit(:customer_id, :name, :postal_code, :address, :how_to_pay, :status, :price, :freight)
 	end
 	def cart_product_params
 		params.require(:cart_product).permit(:product_id, :quantity, :customer_id)

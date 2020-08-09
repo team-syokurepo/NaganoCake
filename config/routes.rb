@@ -18,9 +18,9 @@ namespace :customers do
 	resource :customers, only: [:show, :edit, :update, :destroy]
 	get "customers/quit" => "customers#quit"
 	patch "customers/quit_update" => "customers#quit_update"
+	get "orders/thanks" => "orders#thanks"
 	resources :orders, only: [:index, :show, :create, :new]
 	post "orders/confirm" => "orders#confirm"
-	get "orders/thanks" => "orders#thanks"
 	resources :products, only: [:index, :show] do
 		resources :cart_products, only: [:create]
 	end

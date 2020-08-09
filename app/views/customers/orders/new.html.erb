@@ -9,7 +9,7 @@
       <h3>支払い方法</h3>
     </div>
   </div>
-    
+
 
         <div class="row">
          <p><%= f.radio_button :how_to_pay, "クレジットカード支払い", {checked: true} %> クレジットカード</p>
@@ -25,7 +25,7 @@
 
       　 <div class="row">
     <p>
-       <p><%= f.radio_button :address_option, "A", {} %> A</p>
+       <p><%= f.radio_button :address_option, "A", {checked: true} %> A</p>
       <%= label_tag("r1_1","ご自身の住所") %>
       <%= @customer.postal_code %>
       <%= @customer.address %>
