@@ -49,7 +49,7 @@
 			<table class="table table-bordered">
 				<td style="background-color: #112a63;color: #f1efe7;">合計金額</td>
 				<td>
-					<%= @total_price.to_s(:delimited) %>
+					<%= (@total_price * 1.08).floor.to_s(:delimited) %>
 				</td>
 			</table>
 		</div>
