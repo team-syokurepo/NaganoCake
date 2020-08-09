@@ -10,10 +10,10 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
   	case resource
-	when Admin
-		admins_orders_today_path
-	when Customer
-	 	root_path
+	   when Admin
+		    admins_orders_today_path
+	   when Customer
+	 	   root_path
   	end
   end
 end

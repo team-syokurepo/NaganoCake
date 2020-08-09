@@ -12,7 +12,28 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require jquery
+//= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+// 画像プレビューに関する記述
+$(function(){
+	$('#new-image').on('change', function(e) {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+			$(".product-image").attr('src', e.target.result);
+		}
+		reader.readAsDataURL(e.target.files[0]);
+	});
+});
+
+$(function(){
+				$('#edit-image').on('change', function(e) {
+					var reader = new FileReader();
+					reader.onload = function (e) {
+						$(".product-edit").attr('src', e.target.result);
+					}
+					reader.readAsDataURL(e.target.files[0]);
+				});
+			});
