@@ -30,24 +30,30 @@
     </div>
   </div>
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-5">
           <strong>送料</strong>
+          <%= @freight %>円
         </div>
-        <div class="col-lg-3">
-         </div>
-
 
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-5">
           <strong>商品合計</strong>
         </div>
-        <div class="col-lg-3">
-        商品合計金額をここに表示する
+        <div class="col-lg-5">
+
+        </div>
+    </div>
+
+        <div class="row">
+          <div class="col-lg-5">
+            <strong>請求金額</strong>
+          </div>
+        <div class="col-lg-2">
+   
         </div>
 
-
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-2">
       <h3>支払方法</h3>
       <%= @order.how_to_pay %>
     </div>
@@ -55,11 +61,13 @@
 
 
  <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-5">
       <h3>お届け先</h3>
+    </div>
+    <div class="<col-lg-2>">
       <%= @order.postal_code %>
       <%= @order.address %>
-
+      <%= @order.name %>
     </div>
   </div>
 
