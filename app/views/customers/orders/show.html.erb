@@ -47,13 +47,14 @@
         <th>小計</th>
       </tr>
     </thead>
-    <% @product_orders.each do |product_order| %>
-    <% product_price = Product.find(product_order.id).price * 1.08 %>
+    <% @order.product_orders.each do |f| %>
     <tr>
-      <td><%= Product.find(product_order.id).name %></td>
-      <td>¥<%= product_price.floor.to_s(:delimited) %></td>
-      <td><%= product_order.quantity %></td>
-      <td>¥<%= product_order.price %></td>
+      <td>
+        <%= f.product.name %>
+      </td>
+      <td>¥<%= f.price.to_s(:delimited) %></td>
+      <td><%= f.quantity %></td>
+      <td>¥<%= f.price * f.quantity %></td>
     </tr>
     <% end %>
   </table>
