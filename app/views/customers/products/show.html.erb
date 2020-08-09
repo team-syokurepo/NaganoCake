@@ -9,7 +9,7 @@
 			<%= attachment_image_tag @product, :image, :fill, 300, 200, fallback: "no_image.jpg" %>
 		</div>
 		<% if @cart_product.errors.any? %>
-		<p><%= pluralize(@cart_product.errors.count, "error") %>errors prohibited this obj from being saved:</p>
+		<p><%= pluralize(@cart_product.errors.count, "error") %>件のエラー</p>
 		<ul>
 			<% @cart_product.errors.full_messages.each do |message| %>
 			<li><%= message %></li>

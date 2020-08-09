@@ -8,6 +8,7 @@ class Product < ApplicationRecord
 	 validates :category_id, {presence: true}
 	 validates :price, {presence: true}
 
+
 	  def Product.search(range,word)
         if range == "2"
            @product = Product.where("name LIKE ? OR status LIKE ?","%#{word}%","%#{word}")

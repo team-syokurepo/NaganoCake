@@ -9,6 +9,7 @@
       <h3>支払い方法</h3>
     </div>
   </div>
+    
 
         <div class="row">
          <p><%= f.radio_button :how_to_pay, "クレジットカード支払い", {checked: true} %> クレジットカード</p>
@@ -24,7 +25,7 @@
 
       　 <div class="row">
     <p>
-      <%= radio_button_tag("r1","1") %>
+       <p><%= f.radio_button :address_option, "A", {} %> A</p>
       <%= label_tag("r1_1","ご自身の住所") %>
       <%= @customer.postal_code %>
       <%= @customer.address %>
@@ -37,18 +38,24 @@
 
    	<p>
 
-     <%= radio_button_tag("r2", "1") %>
+
+     <p><%= f.radio_button :address_option, "B", {} %> B</p>
+
      <%= label_tag("r1_2","登録済住所から選択") %>
 
+
      <div class="select">
-      <%= f.select :address, AddressList.all.map {|address| [address.postal_code, address.address, address.name, address.id]} %>
-       <br>
+
+     <%= f.collection_select :addressparams, @addressess, :id, :addressname, class: "form-group" %><br>
+
     </p>
   </div>
   </div>
        <div class="row">
-      <p><%= radio_button_tag("r3","1")  %></p>
+
+      <p><%= f.radio_button :address_option, "C", {} %> C</p>
       <%= label_tag("r1_3","新しいお届け先") %>
+
     </div>
 
   <div class="row">
@@ -87,6 +94,7 @@
   </div>
   </div>
   <% end %>
+</p>
 
 
 
