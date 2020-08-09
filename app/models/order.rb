@@ -11,8 +11,5 @@ class Order < ApplicationRecord
 	}
 
 	enum how_to_pay:{ クレジットカード支払い: 0, 銀行振込: 1}
-	def addressname
-		self.postal_code + self.address + self.name
-	end
 
 end
