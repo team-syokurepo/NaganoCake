@@ -5,7 +5,7 @@
     </div>
 
 	<% if @address_list.errors.any? %>
-	  <p><%= pluralize(@address_list.errors.count, "error") %>perrors prohibited this obj from being saved:</p>
+	  <p><%= pluralize(@address_list.errors.count,"") %>件のエラー</p>
 	    <ul>
 	      <% @address_list.errors.full_messages.each do |message| %>
 		    <li><%= message %></li>
