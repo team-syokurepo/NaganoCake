@@ -5,27 +5,43 @@
     </div>
 
 <!-- 警告文後で追加 -->
+    <%= form_with(model: @customer, url: customers_customers_path, local: true) do |f| %>
 
-    <%= form_for @customer do |f| %>
-	    <div class="row">
-	      <h6 class="col-xs-2">名前</h4>
-	      <%= f.label :（姓）, class:"col-xs-offset-2" %>
-    	  <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+      <div class="row">
+        <h5 class="col-xs-2 form-inline">氏名</h5>
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" , class:"col-xs-offset-1 col-xs-2" %>
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" , class:"col-xs-offset-1" %>
+        </div>
+        <div class="row">
+          <h5 class="col-xs-2 form-inline">フリガナ</h5>
+            <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" , class:"col-xs-offset-1 col-xs-2" %>
+            <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" , class:"col-xs-offset-1" %>
+        </div>
+        <div class="row">
+          <h5 class="col-xs-2 form-group">郵便番号</h5>
+            <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" , class:"col-xs-offset-1 col-xs-2" %>
+        </div>
+        <div class="row">
+          <h5 class="col-xs-2 form-group">住所</h5>
+            <%= f.text_field :address, autofocus: true, autocomplete: "address" , class:"col-xs-offset-1 col-xs-5" %>
+        </div>
+        <div class="row">
+          <h5 class="col-xs-2 form-group">電話番号</h5>
+            <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" , class:"col-xs-offset-1 col-xs-2" %>
+        </div>
+        <div class="row">
+          <h5 class="col-xs-2 form-group">メールアドレス</h5>
+            <%= f.text_field :email, autofocus: true, autocomplete: "email" , class:"col-xs-offset-1 col-xs-2" %>
+        </div>
 
-    	  <%= f.label :(名), class:"col-xs-offset-4" %>
-          <%= f.text_field :first_name, autocomplete: "first_name" %>
-	    </div>
-	<% end %>
 
-
-
-
-
-
-    <div class="row">
-      <%= link_to '編集内容を保存する', customers_customers_path, class: "btn btn-info col-xs-offset-1 row_top" %>
+    <div class="row row_top">
+      <%= f.submit '編集内容を保存する', class: "btn btn-info col-xs-offset-1" %>
       <%= link_to ' 退会する', customers_customers_quit_path, class: "btn btn-danger glyphicon glyphicon-warning-sign col-xs-offset-4" %>
     </div>
+
+  <% end %>
+
 
 </div>
 </div>
