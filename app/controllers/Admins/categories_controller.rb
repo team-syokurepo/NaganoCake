@@ -10,7 +10,7 @@ class Admins::CategoriesController < ApplicationController
 		if  @category.save
 			redirect_to request.referer
 		else
-			@categories = Category.all
+			@categories = Category.page(params[:page]).per(5)
 			render :index
 		end
 	end
