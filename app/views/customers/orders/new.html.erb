@@ -38,9 +38,11 @@
 
    	<p>
 
+
      <p><%= f.radio_button :address_option, "B", {} %> B</p>
 
      <%= label_tag("r1_2","登録済住所から選択") %>
+
 
      <div class="select">
      <%= f.collection_select :addressparams, @addressess, :id, :addressname, class: "form-group" %><br>
@@ -48,8 +50,10 @@
   </div>
   </div>
        <div class="row">
+
       <p><%= f.radio_button :address_option, "C", {} %> C</p>
       <%= label_tag("r1_3","新しいお届け先") %>
+
     </div>
 
   <div class="row">
@@ -88,6 +92,7 @@
   </div>
   </div>
   <% end %>
+</p>
 
 
 
