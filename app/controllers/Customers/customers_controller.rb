@@ -6,10 +6,16 @@ class Customers::CustomersController < ApplicationController
 	end
 
 	def edit
-		@customer = Customer.find(params[:id])
+		@customer = current_customer
 	end
 
 	def update
+		@customer = current_customer
+		if @customer.update(customer_params)
+		   redirect_to customers_customers_path
+		else
+			render :edit
+	    end
 	end
 
 	def destroy
@@ -19,7 +25,6 @@ class Customers::CustomersController < ApplicationController
 	end
 
 	def quit_update
-		# Customer.find_by(id: params[:id], customer_id: params[:customer_id]).destroy
 		customer = current_customer
 		customer.destroy
 		customer.deleted_at
@@ -28,6 +33,6 @@ class Customers::CustomersController < ApplicationController
 
 	private
       def customer_params
-  	    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :phone_number)
+  	    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :phone_number, :email)
       end
 end

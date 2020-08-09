@@ -4,28 +4,53 @@
       <h3 class="col-xs-offset-1 row_top">登録情報編集</h3>
     </div>
 
-<!-- 警告文後で追加 -->
+  <% if @customer.errors.any? %>
+    <p><%= pluralize(@customer.errors.count, "error") %>perrors prohibited this obj from being saved:</p>
+      <ul>
+        <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+  <% end %>
 
-    <%= form_for @customer do |f| %>
-	    <div class="row">
-	      <h6 class="col-xs-2">名前</h4>
-	      <%= f.label :（姓）, class:"col-xs-offset-2" %>
-    	  <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+    <%= form_with(model: @customer, url: customers_customers_path, local: true) do |f| %>
 
-    	  <%= f.label :(名), class:"col-xs-offset-4" %>
-          <%= f.text_field :first_name, autocomplete: "first_name" %>
-	    </div>
-	<% end %>
+        <div class="r-form row">
+            <%= f.label :名前　　　　　　　　　　　　　（姓）,class: "col-xs-3"%>
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" ,class: "form-contorol col-xs-2" %>
+            <%= f.label :　（名）,class: "col-xs-1" %>
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" ,class: "form-contorol col-xs-2" %>
+        </div>
+        <div class="r-form row">
+            <%= f.label :フリガナ　　　　　　　　　　（セイ）,class: "col-xs-3" %>
+            <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" ,class: "form-contorol col-xs-2" %>
+            <%= f.label :（メイ）,class: "col-xs-1" %>
+            <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" ,class: "form-contorol col-xs-2" %>
+        </div>
+        <div class="r-form row">
+            <%= f.label :メールアドレス ,class: "col-xs-3"%>
+            <%= f.text_field :email, autofocus: true, autocomplete: "email" ,class: "form-contorol col-xs-2" %>
+        </div>
+        <div class="r-form row">
+            <%= f.label :郵便番号（ハイフンなし）,class: "col-xs-3" %>
+            <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" ,class: "form-contorol col-xs-2" %>
+        </div>
+        <div class="r-form row">
+            <%= f.label :住所 ,class: "col-xs-3"%>
+            <%= f.text_field :address, autofocus: true, autocomplete: "address" , class: "form-contorol col-xs-5" %>
+        </div>
+        <div class="r-form row">
+            <%= f.label :電話番号（ハイフンなし）,class: "col-xs-3" %>
+            <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" ,class: "form-contorol col-xs-2" %>
+        </div>
 
 
-
-
-
-
-    <div class="row">
-      <%= link_to '編集内容を保存する', customers_customers_path, class: "btn btn-info col-xs-offset-1 row_top" %>
+    <div class="row row_top">
+      <%= f.submit '編集内容を保存する', class: "btn btn-info col-xs-offset-1" %>
       <%= link_to ' 退会する', customers_customers_quit_path, class: "btn btn-danger glyphicon glyphicon-warning-sign col-xs-offset-4" %>
     </div>
+
+  <% end %>
+
 
 </div>
 </div>
