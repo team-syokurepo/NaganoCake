@@ -8,7 +8,6 @@ class Customers::OrdersController < ApplicationController
         @customer = current_customer
         @order = Order.find(params[:id])
         @total_price = @order.price + @order.freight
-        @product_orders = ProductOrder.where(params[:@order])
 	end
 
 	def new

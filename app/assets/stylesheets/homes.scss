@@ -6,6 +6,7 @@
 	background-color: #f1efe7;
 	color: #112a63;
 	height: 100%;
+	padding-bottom: 20px;
 }
 /*home#topのcss*/
 .genre-search{
@@ -55,7 +56,12 @@
 .items {
 	color: #112a63;
 }
-.recommend-box {
+.recommend-box:hover {
+	opacity: 0.5;
+}
+.recommend-text {
+	display: inline-block;
+	padding: 10px 0;
 	color: #112a63;
 }
 .more {
