@@ -1,12 +1,11 @@
 class Admins::OrdersController < ApplicationController
 	before_action :authenticate_admin!
 	def index
-		# @order_find = Order.find_by(id: params[:id])
 		@customer_id = params[:customer_id]
 		if @customer_id.blank?
 			@orders = Order.page(params[:page])
 		else
-			@customer = Customer.find(@customer_id)
+			@customer = Customer.with_deleted.find(@customer_id)
 			@orders = Order.where(customer_id: @customer_id).page(params[:page])
 		end
 	end
