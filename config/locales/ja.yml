@@ -28,6 +28,10 @@ ja:
       admin:
                 email: メールアドレス
                 encrypted_password: パスワード
+      order:
+                postal_code: 郵便番号
+                name: 宛名
+                address: 住所
 
 
 

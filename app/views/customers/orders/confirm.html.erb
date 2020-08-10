@@ -1,5 +1,7 @@
+
 <div class="top-all">
   <div class="container">
+
     <div class="row">
       <h2>注文情報確認</h2>
       <div class="col-xs-8">
@@ -63,6 +65,7 @@
       </tr>
   </table>
 
+
   <%= form_with(model: @order, url: customers_orders_path, local: true) do |f| %>
   <%= f.hidden_field :customer_id, value: @current_customer.id %>
   <%= f.hidden_field :how_to_pay, value: @order.how_to_pay %>
@@ -72,8 +75,10 @@
   <%= f.hidden_field :freight, value: @freight %>
   <%= f.hidden_field :price, value: @total_price %>
   <%= f.hidden_field :status, value: "入金待ち" %>
+
   <div class="col-xs-5 col-xs-offset-5">
     <%= f.submit "購入を確定する", class: "btn btn-success btn-lg" %>
+
   </div>
   <% end %>
 </div>

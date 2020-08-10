@@ -1,16 +1,20 @@
 class Admins::OrdersController < ApplicationController
 	before_action :authenticate_admin!
 	def index
-		@orders = Order.page(params[:page])
+		# @order_find = Order.find_by(id: params[:id])
+		@customer_id = params[:customer_id]
+		if @customer_id.blank?
+			@orders = Order.page(params[:page])
+		else
+			@customer = Customer.find(@customer_id)
+			@orders = Order.where(customer_id: @customer_id).page(params[:page])
+		end
 	end
 
 	def show
-		if  @order = Order.find_by(id: params[:id])
-		    @freight = 800
-		    @product_orders = ProductOrder.where(order_id: @order.id)
-		else
-		    redirect_to request.referer, notice: "未注文のお客様です！！"
-		end
+		  @order = Order.find_by(id: params[:id])
+		  @freight = 800
+		  @product_orders = ProductOrder.all
 	end
 
 	def today
@@ -35,7 +39,7 @@ class Admins::OrdersController < ApplicationController
 
 	def order_params
 
-		params.require(:order).permit(:freight, :status, :postal_code, :address, :name, :how_to_pay, :price, :product_order_id)
+		params.require(:order).permit(:freight, :status, :postal_code, :address, :name, :how_to_pay, :price, :product_order_id, :customer_id)
 
 	end
 
