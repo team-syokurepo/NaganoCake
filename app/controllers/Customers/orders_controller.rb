@@ -18,7 +18,7 @@ class Customers::OrdersController < ApplicationController
 	end
 
 	def create
-		@order = Order.new(order_params)
+		@order = current_customer.orders.new(order_params)
 		@order.save
 		@cart_products = current_customer.cart_products.all
 		 @cart_products.each do |cart_product|
@@ -42,19 +42,19 @@ class Customers::OrdersController < ApplicationController
 			@total_price += cart_product.product.price * cart_product.quantity * 1.08
 		end
 		if request.post? then
-		if params[:order][:address_option] == "A" then
-			@order.postal_code = current_customer.postal_code
-			@order.address = current_customer.address
-			@order.name = current_customer.first_name + current_customer.last_name
-		elsif params[:order][:address_option] == "B" then
-			id = current_customer.address_lists.find_by(id: params[:order][:addressparams])
-			@order.postal_code = id.postal_code
-			@order.address = id.address
-			@order.name = id.name
+			if params[:order][:address_option] == "A" then
+				@order.postal_code = current_customer.postal_code
+				@order.address = current_customer.address
+				@order.name = current_customer.first_name + current_customer.last_name
+			elsif params[:order][:address_option] == "B" then
+				id = current_customer.address_lists.find_by(id: params[:order][:addressparams])
+				@order.postal_code = id.postal_code
+				@order.address = id.address
+				@order.name = id.name
+			end
+		end
 
 	end
-end
-end
 
 
 	def thanks
