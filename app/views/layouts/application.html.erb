@@ -20,9 +20,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <% if admin_signed_in? %>
+      <a class="navbar-brand" href="/admins/orders/today">
+        <img src="/assets/logo.jpg" style="height: 100px;">
+      </a>
+      <% else %>
       <a class="navbar-brand" href="/">
         <img src="/assets/logo.jpg" style="height: 100px;">
       </a>
+      <% end %>
     </div>
     <div class="collapse navbar-collapse" id="navbarEexample2">
       <% if customer_signed_in? %>

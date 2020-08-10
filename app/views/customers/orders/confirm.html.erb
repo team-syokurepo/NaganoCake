@@ -1,73 +1,69 @@
-<div class="container">
 
- <div class="row">
-  <h2>注文情報確認</h2>
- </div>
-
-
-
- <% @cart_products.each do |cart_product| %>
-  <% product_price = cart_product.product.price * 1.08 %>
-  <div class="d-none d-lg-block space">
-   <div class="row">
-    <div class="col-lg-5"><h4>商品名</h4></div>
-    <div class="col-lg-2"><h4>単価（税込）</h4></div>
-    <div class="col-lg-2"><h4>数量</h4></div>
-    <div class="col-lg-2"><h4>小計</h4></div>
-   </div>
-   <div class="col-lg-5">
-    <%= cart_product.product.name %>
-   </div>
-   <div class="col-lg-2">
-    <%= product_price.floor.to_s(:delimited) %>
-    </div>
-    <div class="col-lg-2">
-     <%= cart_product.quantity %>
-    </div>
-    <div class="col-lg-2">
-     <%= (cart_product.product.price * 1.08 * cart_product.quantity).floor.to_s(:delimited) %>
-    </div>
-  <% end %>
+<div class="top-all">
+  <div class="container">
 
     <div class="row">
-        <div class="col-lg-5">
-          <strong>送料</strong>
-          <%= @freight %>円
-        </div>
+      <h2>注文情報確認</h2>
+      <div class="col-xs-8">
+      <table class="table table-bordered">
+        <thead style="background-color: #112a63">
+          <tr style="color: #f1efe7;">
+            <th class="col-xs-5"><h4>商品名</h4></th>
+            <th class="col-xs-2"><h4>単価（税込）</h4></th>
+            <th class="col-xs-2"><h4>数量</h4></th>
+            <th class="col-xs-2"><h4>小計</h4></th>
+          </tr>
+        </thead>
+          <% @cart_products.each do |cart_product| %>
+        <% product_price = cart_product.product.price * 1.08 %>
+        <tr>
+         <th class="col-xs-5">
+          <%= attachment_image_tag cart_product.product, :image, :fill, 61, 41, fallback: "no_image.jpg" ,size:'61x41' %>
+          <%= cart_product.product.name %>
+         </th>
+         <th class="col-xs-2">
+          <%= product_price.floor.to_s(:delimited) %>
+          </th>
+          <th class="col-xs-2">
+           <%= cart_product.quantity %>
+          </th>
+          <th class="col-xs-2">
+           <%= (cart_product.product.price * 1.08 * cart_product.quantity).floor.to_s(:delimited) %>
+          </th>
+        </tr>
+        <% end %>
+      </table>
     </div>
-
-    <div class="row">
-        <div class="col-lg-5">
-          <strong>商品合計</strong>
-       <%= @total_price.floor.to_s(:delimited)  %>円
-        </div>
+    <div class="col-xs-4">
+      <table class="table table-bordered">
+          <tr>
+            <th class="col-xs-4 customers_table_term">送料</th>
+            <th><%= @freight %>円</th>
+          </tr>
+          <tr>
+            <th class="customers_table_term">商品合計</th>
+            <th><%= @total_price.floor.to_s(:delimited)  %>円</th>
+          </tr>
+          <tr>
+            <th class="customers_table_term">請求金額</th>
+            <th><%= (@total_price. + @freight).floor.to_s(:delimited) %>円</th>
+          </tr>
+      </table>
     </div>
-
-        <div class="row">
-          <div class="col-lg-5">
-            <strong>請求金額</strong>
-                  <%= (@total_price. + @freight).floor.to_s(:delimited) %>円
-          </div>
-        </div>
-
-  <div class="row">
-    <div class="col-lg-2">
-      <h3>支払方法</h3>
-      <%= @order.how_to_pay %>
-    </div>
-  </div>
-
-
- <div class="row">
-    <div class="col-lg-5">
-      <h3>お届け先</h3>
-    </div>
-    <div class="col-lg-2">
-      <%= @order.postal_code %>
-      <%= @order.address %>
+      <table class="table">
+        <tr>
+        <th  style="border-top: none;">支払方法</th>
+        <th style="font-weight: normal;border-top: none;"><%= @order.how_to_pay %></th>
+      </tr>
+      <tr>
+      <th  style="border-top: none;">お届け先</th>
+      <th style="font-weight: normal;border-top: none;">
+      <%= @order.postal_code %><br>
+      <%= @order.address %><br>
       <%= @order.name %>
-    </div>
- </div>
+     </th>
+      </tr>
+  </table>
 
 
   <%= form_with(model: @order, url: customers_orders_path, local: true) do |f| %>
@@ -80,13 +76,12 @@
   <%= f.hidden_field :price, value: @total_price %>
   <%= f.hidden_field :status, value: "入金待ち" %>
 
-<div class="row">
-  <div class="col-lg-5">
-  <%= f.submit "購入を確定する", class: "btn btn-success btn-lg" %>
+  <div class="col-xs-5 col-xs-offset-5">
+    <%= f.submit "購入を確定する", class: "btn btn-success btn-lg" %>
+
   </div>
+  <% end %>
 </div>
-<% end %>
-
-
+</div>
 </div>
 
