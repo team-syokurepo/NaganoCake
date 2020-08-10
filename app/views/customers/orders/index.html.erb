@@ -17,8 +17,11 @@
 		<% @orders.each do |order| %>
 			<tr>
 				<td class="order-index-table"><%= order.created_at.strftime('%Y/%m/%d') %></td>
-				<td  class="order-index-table"><%= order.address %></td>
-				<td>
+				<td  class="order-index-table">
+					<%= order.postal_code %><br>
+					<%= order.address %><br>
+					<%= order.name %></td>
+				<td class="order-index-table">
 					<% order.product_orders.each do |product_order| %>
 						<%= product_order.product.name %><br>
 					<% end %>

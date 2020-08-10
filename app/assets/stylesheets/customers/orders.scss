@@ -22,3 +22,27 @@
 .order-index-table {
 	vertical-align: middle !important;
 }
+/*注文情報登録のCSS*/
+.how-to-pay {
+	margin-bottom: 20px;
+}
+.how-to-pay h3{
+	font-weight: bold;
+}
+.order-address h3{
+	font-weight: bold;
+}
+.address-select {
+	padding: 10px 0;
+}
+.new-address {
+	padding-bottom: 10px;
+}
+/*thanksページのCSS*/
+.thanks {
+	height: 500px;
+	text-align: center;
+}
+.thanks h1{
+	line-height: 500px;
+}

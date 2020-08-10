@@ -7,7 +7,7 @@ class Admins::OrdersController < ApplicationController
 	def show
 		if  @order = Order.find_by(id: params[:id])
 		    @freight = 800
-		    @product_orders = ProductOrder.all
+		    @product_orders = ProductOrder.where(order_id: @order.id)
 		else
 		    redirect_to request.referer, notice: "未注文のお客様です！！"
 		end
