@@ -19,7 +19,7 @@ class Customers::OrdersController < ApplicationController
 
 	def create
 		@order = current_customer.orders.new(order_params)
-		@order.save
+		if @order.save
 		@cart_products = current_customer.cart_products.all
 		 @cart_products.each do |cart_product|
 			@order_products = @order.product_orders.new
@@ -31,6 +31,11 @@ class Customers::OrdersController < ApplicationController
 			current_customer.cart_products.destroy_all
 	     end
 	     redirect_to  customers_orders_thanks_path
+	 	else
+	    	@customer = current_customer
+	    	@addressess = current_customer.address_lists
+	 		render :new
+	 	end
 	 end
 
 	def confirm

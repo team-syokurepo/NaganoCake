@@ -6,7 +6,7 @@
 
 
   <% if @address_list.errors.any? %>
-    <p><%= pluralize(@address_list.errors.count, "error") %>件のエラー</p>
+    <p><%= pluralize(@address_list.errors.count, "") %>件のエラー</p>
       <ul>
         <% @address_list.errors.full_messages.each do |message| %>
         <li><%= message %></li>
