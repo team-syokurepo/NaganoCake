@@ -14,7 +14,7 @@ class Admins::OrdersController < ApplicationController
 	def show
 		  @order = Order.find_by(id: params[:id])
 		  @freight = 800
-		  @product_orders = ProductOrder.all
+		  @product_orders = ProductOrder.where(order_id: @order.id)
 	end
 
 	def today
