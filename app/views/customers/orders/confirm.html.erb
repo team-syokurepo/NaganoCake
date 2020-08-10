@@ -4,7 +4,7 @@
   <h2>注文情報確認</h2>
  </div>
 
-  <%= form_for :@order, url: {controller: 'customers/orders', action: 'create'}  do |f| %>
+   <%= form_with(model: @order, url: customers_orders_path, local: true) do |f| %>
 
  <% @cart_products.each do |cart_product| %>
   <% product_price = cart_product.product.price * 1.08 %>
