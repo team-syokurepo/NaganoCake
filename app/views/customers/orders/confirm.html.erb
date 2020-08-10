@@ -4,6 +4,7 @@
   <h2>注文情報確認</h2>
  </div>
 
+
  <% @cart_products.each do |cart_product| %>
   <% product_price = cart_product.product.price * 1.08 %>
   <div class="d-none d-lg-block space">
@@ -67,7 +68,8 @@
     </div>
  </div>
 
-<%= form_with(model: @order, url: customers_orders_path, local: true) do |f| %>
+
+  <%= form_with(model: @order, url: customers_orders_path, local: true) do |f| %>
   <%= f.hidden_field :customer_id, value: @current_customer.id %>
   <%= f.hidden_field :how_to_pay, value: @order.how_to_pay %>
   <%= f.hidden_field :postal_code, value: @order.postal_code %>
@@ -75,11 +77,11 @@
   <%= f.hidden_field :name, value: @order.name %>
   <%= f.hidden_field :freight, value: @freight %>
   <%= f.hidden_field :price, value: @total_price %>
-
+  <%= f.hidden_field :status, value: "入金待ち" %>
 
 <div class="row">
   <div class="col-lg-5">
-    <%= f.submit "購入を確定する", class: "btn btn-success btn-lg" %>
+  <%= f.submit "購入を確定する", class: "btn btn-success btn-lg" %>
   </div>
 </div>
 <% end %>

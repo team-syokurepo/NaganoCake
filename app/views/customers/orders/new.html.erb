@@ -1,8 +1,21 @@
+ <% if @order.errors.any? %>
+    <div class="alert alert-warning">
+      <ul>
+        <%= @order.errors.count %>件のエラー
+        <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+　　<% end %>
+
 <%= form_with(model: @order, local: true, url: {action: 'confirm'}) do |f| %>
 <div class="container">
    <div class="row">
       <h2 class="col-xs3">注文情報入力</h2>
    </div>
+
+ 
 
   <div class="row">
     <div class="col-xs1">
@@ -22,6 +35,8 @@
    <div class="row">
     　 <h3 class="col-xs1">お届け先</h3>
   </div>
+
+
 
       　 <div class="row">
     <p>
