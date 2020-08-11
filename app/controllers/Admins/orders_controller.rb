@@ -42,9 +42,16 @@ class Admins::OrdersController < ApplicationController
 			order.status = "製作中"
 			order.update(status: order.status)
 		end
-		product_orders = ProductOrder.where(order_id: order.id)
-		product_orders.each do |product_order|
-			if product_order.status == "製作完了"
+		if product_order.status == "製作完了"
+			product_orders = ProductOrder.where(order_id: order.id)
+			all_status = true
+			product_orders.each do |productorder|
+				if productorder.status != "製作完了"
+					all_status = false
+					break
+				end
+			end
+			if all_status == true
 				order.status = "発送準備中"
 				order.update(status: order.status)
 			end
