@@ -6,7 +6,6 @@
          </div>
         </div>
 
-
               
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="form-group row">
@@ -23,7 +22,7 @@
                   <%= f.label :パスワード, class: "col-xs-2 col-xs-offset-3 col-form-label" %>
                     <div class="col-xs-5">
                       <%= f.password_field :password, autocomplete: "current-password",class:"form-control" %>
-                      <%= flash[:alert] %>
+
                     </div>
                 </div>
 
