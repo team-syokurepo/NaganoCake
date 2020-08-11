@@ -24,7 +24,7 @@ class Customers::CartProductsController < ApplicationController
 	def destroy
 		cart_product = CartProduct.find(params[:id])
 		cart_product.destroy
-		redirect_to request.referer
+		redirect_to request.referer,notice: "削除しました。"
 	end
 
 	def update
@@ -37,7 +37,7 @@ class Customers::CartProductsController < ApplicationController
 	def empty
 		cart_products = current_customer.cart_products
 		cart_products.destroy_all
-		redirect_to request.referer
+		redirect_to request.referer,notice: "カートを空にしました。"
 	end
 
 

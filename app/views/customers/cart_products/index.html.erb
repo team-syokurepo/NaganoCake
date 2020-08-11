@@ -1,8 +1,8 @@
 <div class="top-all">
 	<div class="container">
-		<h2>ショッピングカート</h2>
+		<h3>ショッピングカート</h3>
 		<div class="empty-btn">
-		<%= link_to "カートを空にする", customers_cart_product_empty_path,method: :delete,data: {confirm: "カートを空にしますか？"}, class: "btn btn-danger col-xs-offset-10"%>
+		<%= link_to "カートを空にする", customers_cart_product_empty_path,method: :delete,data: {confirm: "カートを空にしますか？",cancel:"やめる",commit:"空にする",title:"確認"}, class: "btn btn-danger col-xs-offset-10"%>
 		</div>
 		<table class="table table-bordered">
 			<thead  style="background-color: #112a63">
@@ -33,7 +33,7 @@
 						<% end %>
 					</td>
 					<td class="col-xs-1 cart-table">
-						<%= (cart_product.product.price * 1.08 * cart_product.quantity).floor.to_s(:delimited) %>
+						<%= (product_price * cart_product.quantity).floor.to_s(:delimited) %>
 					</td>
 					<td class="col-xs-1">
 						<%= link_to "削除する", customers_cart_product_path(cart_product), method: :delete, class: "btn btn-danger col-xs-offset-3" %>
