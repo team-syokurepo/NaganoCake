@@ -2,7 +2,7 @@
 	<div class="container">
 		<h3>ショッピングカート</h3>
 		<div class="empty-btn">
-		<%= link_to "カートを空にする", customers_cart_product_empty_path,method: :delete,data: {confirm: "カートを空にしますか？"}, class: "btn btn-danger col-xs-offset-10"%>
+		<%= link_to "カートを空にする", customers_cart_product_empty_path,method: :delete,data: {confirm: "カートを空にしますか？",cancel:"やめる",commit:"空にする",title:"確認"}, class: "btn btn-danger col-xs-offset-10"%>
 		</div>
 		<table class="table table-bordered">
 			<thead  style="background-color: #112a63">
