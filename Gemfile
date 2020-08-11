@@ -71,4 +71,5 @@ gem 'jquery-rails'
 gem "kaminari","~> 1.2.1"
 gem 'pry-byebug'
 gem 'rails-i18n'
+gem 'data-confirm-modal'
 
