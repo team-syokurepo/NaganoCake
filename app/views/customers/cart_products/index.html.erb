@@ -1,6 +1,6 @@
 <div class="top-all">
 	<div class="container">
-		<h2>ショッピングカート</h2>
+		<h3>ショッピングカート</h3>
 		<div class="empty-btn">
 		<%= link_to "カートを空にする", customers_cart_product_empty_path,method: :delete,data: {confirm: "カートを空にしますか？"}, class: "btn btn-danger col-xs-offset-10"%>
 		</div>
@@ -56,4 +56,5 @@
 			<div class="info-link col-xs-offset-5">
 				<%=link_to_if(@cart_products.exists?,"情報入力に進む", new_customers_order_path, class: "btn btn-success btn-lg"){}%>
 			</div>
+		</div>
 </div>

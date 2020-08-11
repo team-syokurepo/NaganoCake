@@ -20,13 +20,16 @@ class Customers::OrdersController < ApplicationController
 	def create
 		@order = current_customer.orders.new(order_params)
 		@order.save
+
 		params[:address_option] == "C"
+		if @order.address != current_customer.address && AddressList.find_by(address: @order.address).nil?
 		     address_list = AddressList.new
 		     address_list.postal_code = @order.postal_code
 		     address_list.address = @order.address
 		     address_list.name = @order.name
 		     address_list.customer_id = current_customer.id
 		     address_list.save
+		 end
 		if @order.save
 		@cart_products = current_customer.cart_products.all
 		 @cart_products.each do |cart_product|

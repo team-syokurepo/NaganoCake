@@ -18,10 +18,9 @@
 					    <th class="col-xs-6">配送先</th>
 					    <td>
 							<p>
-								〒<%= @order.postal_code %>
-								<%= @order.address %>
+								〒<%= @order.postal_code %><br>
+								<%= @order.address %><br>
 								<%= @order.name %>
-									
 								</p>
 					    </td>
 					  </tr>
@@ -86,20 +85,20 @@
 					</div>
 					<table class="tabele-title order-show-price">
 						  <tr>
-						    <th class="col-xs-5">商品合計</th>
+						    <th class="col-xs-6">商品合計</th>
 						    <td>
 						    <%= @order.price.to_s(:delimited) %>円
 							</td>
 						  </tr>
 						    <tr>
-						    <th class="col-xs-5">送料</th>
+						    <th class="col-xs-6">送料</th>
 						    <td>
 						    <%= @order.freight %>円
 							</td>
 						  </tr>
 						  <tr>
-						    <th class="col-xs-5">請求金額合計</th>
-						    <td class="col-xs-">
+						    <th class="col-xs-6">請求金額合計</th>
+						    <td>
 						    <%= (@order.price + @order.freight).to_s(:delimited) %>円
 							</td>
 						  </tr>
