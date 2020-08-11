@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+//= require data-confirm-modal
 
 // 画像プレビューに関する記述
 $(function(){
