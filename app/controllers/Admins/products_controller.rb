@@ -17,7 +17,7 @@ class Admins::ProductsController < ApplicationController
 	def create
 		@product = Product.new(product_params)
 		if @product.save
-			redirect_to admins_product_path(@product)
+			redirect_to admins_product_path(@product),notice: "#{@product.name}が追加されました"
 		else
 			render 'new'
 		end
