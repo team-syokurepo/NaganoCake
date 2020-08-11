@@ -34,7 +34,7 @@
 					    <th class="col-xs-6">注文ステータス</th>
 					    <td>
 					    	<%= form_with model: @order, url:admins_order_path(@order),method: :patch, local: true do |f| %>
-							<%= f.select :status, [["入金待ち"], ["入金確認"], ["制作中"] ,["発送準備中"], ["発送済み"]] %>
+							<%= f.select :status, [["入金待ち"], ["入金確認"], ["製作中"] ,["発送準備中"], ["発送済み"]] %>
 						</td>
 						<td>
 							<%= f.submit "更新",class: "order-update btn btn-info" %>

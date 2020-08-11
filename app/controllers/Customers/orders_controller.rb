@@ -59,7 +59,7 @@ class Customers::OrdersController < ApplicationController
 			if params[:order][:address_option] == "A" then
 				@order.postal_code = current_customer.postal_code
 				@order.address = current_customer.address
-				@order.name = current_customer.first_name + current_customer.last_name
+				@order.name = current_customer.last_name + current_customer.first_name
 			elsif params[:order][:address_option] == "B" then
 				id = current_customer.address_lists.find_by(id: params[:order][:addressparams])
 				@order.postal_code = id.postal_code

@@ -23,6 +23,13 @@ class Admins::OrdersController < ApplicationController
 	def update
 		@order = Order.find(params[:id])
 		@order.update(order_params)
+		if @order.status == "入金確認"
+			product_orders = ProductOrder.where(order_id: @order.id)
+			product_orders.each do |product_order|
+				product_order.status = "製作待ち"
+				product_order.update(status: product_order.status)
+			end
+		end
 		redirect_to request.referer
 
 	end
@@ -30,6 +37,19 @@ class Admins::OrdersController < ApplicationController
 	def product_update
 		product_order = ProductOrder.find(params[:id])
 		product_order.update(product_order_params)
+		order = Order.find(product_order.order_id)
+		if product_order.status == "製作中"
+			order.status = "製作中"
+			order.update(status: order.status)
+		end
+		product_orders = ProductOrder.where(order_id: order.id)
+		product_orders.each do |product_order|
+			if product_order.status == "製作完了"
+				order.status = "発送準備中"
+				order.update(status: order.status)
+			end
+		end
+
 		redirect_to request.referer
 	end
 
