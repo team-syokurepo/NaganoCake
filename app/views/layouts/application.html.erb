@@ -20,11 +20,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <% if admin_signed_in? %>
+      <a class="navbar-brand" href="/admins/orders/today">
+        <img src="/assets/logo.jpg" style="height: 100px;">
+      </a>
+      <% else %>
       <a class="navbar-brand" href="/">
         <img src="/assets/logo.jpg" style="height: 100px;">
       </a>
+      <% end %>
     </div>
     <div class="collapse navbar-collapse" id="navbarEexample2">
+      <% if customer_signed_in? %>
+        <p class="navbar-text header-name" style="margin-top: 50px;">ようこそ<span class="header-name2"><%= current_customer.last_name %><%= current_customer.first_name %></span>さん!</p>
+      <% end %>
       <ul class="nav navbar-nav navbar-right nav-icon">
         <% if customer_signed_in? %>
           <li><%= link_to "マイページ", customers_customers_path, class: "btn btn-style menu-btn" %></li>
@@ -34,9 +43,28 @@
         <% elsif admin_signed_in? %>
           <li><%= link_to "商品一覧", admins_products_path, class: "btn btn-style menu-btn" %></li>
           <li ><%= link_to "会員一覧", admins_customers_path, class: "btn btn-style menu-btn" %></li>
-          <li><%= link_to "注文履歴一覧", admins_orders_path, class: "btn btn-info btn-style　menu-btn" %></li>
+          <li><%= link_to "注文履歴一覧", admins_orders_path, class: "btn btn-style menu-btn" %></li>
           <li ><%= link_to "ジャンル一覧", admins_categories_path, class: "btn btn-style menu-btn" %></li>
           <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: "btn btn-warning btn-style" %></li>
+
+           <!-- 検索form -->
+           <div class="form-inline col-xs-offset-4", style="color: #112a63, margin-top: 5px;">
+             <div class="form-group search-nav">
+              <%= form_tag(search_path, :method => 'get') do %>
+                <%= select_tag :range ,options_for_select([['---選択してください---', ''], ['Customer', '1'], ['Product', '2']]), class: 'form-control input-sm' %>
+                <div class="input-group">
+                    <%= text_field_tag :word, "", class: "form-control input-sm", placeholder: "Search" %>
+                    <span class="input-group-btn">
+                   <%= button_tag( class: "btn btn-default glyphicon glyphicon-search input-sm",style: "top: 0;") do %>
+                    <% end %>
+                  </span>
+                </div>
+              <% end %>
+            </div>
+
+           </div>
+           <!-- 検索form -->
+
         <% else %>
           <li><%= link_to "About", home_about_path, class: "btn btn-style menu-btn" %></li>
           <li ><%= link_to "商品一覧", customers_products_path, class: "btn btn-style menu-btn" %></li>
@@ -48,6 +76,9 @@
   </div>
 </nav>
     </header>
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}",id: "alert") %>
+  <% end %>
     <%= yield %>
     <footer class="footer">
     </footer>

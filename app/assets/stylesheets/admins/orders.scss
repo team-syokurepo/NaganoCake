@@ -1,3 +1,28 @@
 // Place all the styles related to the admins/Orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.admins_orders {
+	background-color: #f1efe7;
+	color: #112a63;
+	padding-top: 50px;
+	padding-bottom: 80px;
+}
+
+.row_top {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+/*Today画面のCSS*/
+.today-count {
+	font-size: 30px;
+}
+
+/*Order/showのCSS*/
+.price-position {
+	position: relative;
+}
+.order-show-price {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}

@@ -1,0 +1,37 @@
+<div class="admins_orders">
+<div class="container">
+    <div class="row">
+      <h3 class="col-xs-offset-1 row_top">注文履歴一覧</h3>
+    </div>
+
+
+    <table class="table table-bordered">
+          <tr>
+            <th class="col-xs-2 customers_table_term">購入日時</th>
+            <th class="customers_table_term">購入者</th>
+            <th class="customers_table_term">注文個数</th>
+            <th class="customers_table_term">注文ステータス</th>
+          </tr>
+
+
+		  <% @orders.each do |order| %>
+		      <% order_id = order.id %>
+		      <% product_orders = ProductOrder.where(order_id: order_id) %>
+			  <% total_quantity = 0 %>
+			  <% product_orders.each do |product_order| %>
+				<% total_quantity += product_order.quantity %>
+			  <% end %>
+			  <tr>
+		        <td><%= link_to order.created_at.strftime('%Y/%m/%d/ %H:%M:%S'), admins_order_path(order), data: {"turbolinks"=>false} %>
+		        </td>
+		        <td><%= Customer.with_deleted.find(order.customer_id).last_name %>
+					<%= Customer.with_deleted.find(order.customer_id).first_name %>
+				</td>
+				<td><%= total_quantity %></td>
+		        <td><%= order.status %></td>
+		      </tr>
+          <% end %>
+	</table>
+  <%= paginate @orders %>
+</div>
+</div>

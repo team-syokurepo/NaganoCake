@@ -2,10 +2,11 @@
 	<h4>ジャンル検索</h4>
 	<div class="genre">
 		<ul>
-			<li><%= link_to "ケーキ", customers_products_path, class: "genre-item" %></li>
-			<li><%= link_to "焼き菓子", customers_products_path, class: "genre-item" %></li>
-			<li><%= link_to "プリン", customers_products_path, class: "genre-item" %></li>
-			<li><%= link_to "キャンディ", customers_products_path, class: "genre-item" %></li>
+			<% categories.each do |category| %>
+			<% if category.valid_flag == true %>
+			<li><%= link_to category.name, customers_products_path(category_id: category.id), class: "genre-item" %></li>
+			<% end %>
+			<% end %>
 		</ul>
 	</div>
 </div>

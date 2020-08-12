@@ -1,0 +1,73 @@
+<div class="serche_main">
+  <div class="container">
+
+    <table class="table table-hover table-bordered">
+
+    <% if @range == '2' %>
+      <div class="row">
+        <h3 class="col-xs-offset-1 row_top">'<%= params[:word] %>'　商品検索結果</h3>
+      </div>
+
+      <thead>
+        <tr style="color: #f1efe7;">
+                <th class="customers_table_term">商品ID</th>
+                <th class="customers_table_term">商品名</th>
+                <th class="customers_table_term">税抜価格</th>
+                <th class="customers_table_term">ジャンル</th>
+                <th class="customers_table_term">ステータス</th>
+              </tr>
+      </thead>
+      <tbody>
+
+         <% @products.each do |product| %>
+           <tr>
+              <td><%= product.id %></td>
+              <td><%= link_to product.name, admins_product_path(product.id) %></td>
+              <td><%= product.price.to_s(:delimited) %>円</td>
+              <td><%= Category.find(product.category.id).name %></td>
+              <td><% if product.status == true %>
+                <%= "販売中" %>
+                <% else %>
+                <%= "販売停止中" %>
+                <% end %>
+              </td>
+            </tr>
+         <% end %>
+      </tbody>
+      </table>
+
+  <% else %>
+    <div class="row">
+      <h3 class="col-xs-offset-1 row_top">'<%= params[:word] %>'　会員検索結果</h3>
+    </div>
+
+    <thead>
+       <tr>
+            <th class="customers_table_term">会員ID</th>
+            <th class="customers_table_term">氏名</th>
+            <th class="customers_table_term">メールアドレス</th>
+            <th class="customers_table_term">ステータス</th>
+       </tr>
+    </thead>
+
+    <tbody>
+
+      <% @customers.each do |customer| %>
+       <tr>
+            <td><%= customer.id %></td>
+            <td><%= link_to "#{customer.last_name}#{customer.first_name}", admins_customer_path(customer) %>
+            </td>
+    　　　　 <td><%= customer.email %></td>
+
+            <% unless customer.deleted_at? %>
+                <td class="text-danger">有効</td>
+            <% else %>
+                <td>無効</td>
+            <% end %>
+       </tr>
+      <% end %>
+  <% end %>
+  </table>
+</tbody>
+</div>
+</div>

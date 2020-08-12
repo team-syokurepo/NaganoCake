@@ -2,17 +2,19 @@
 <div class="container">
 <div class="row">
 	<section class="product-new">
-		<h3>商品新規登録</h3>
 		<% if @product.errors.any? %>
-<p><%= pluralize(@product.errors.count, "error") %>perrors prohibited this obj from being saved:</p>
+<p><%= pluralize(@product.errors.count, "") %>件のエラー</p>
 <ul>
 	<% @product.errors.full_messages.each do |message| %>
 	<li><%= message %></li>
+</ul>
 	<% end %>
 	<% end %>
+		<h3>商品新規登録</h3>
 		<%= form_for(@product, url: {controller: 'admins/products', action: 'create'}) do |f| %>
 		<div class="col-xs-4 col-xs-offset-2">
-			<%= f.attachment_field :image %>
+			<%= attachment_image_tag @product, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150", class: "product-image" %>
+			<%= f.attachment_field :image, id: "new-image" %>
 		</div>
 		<div class="col-xs-6">
 			<%= f.label :商品名　　　　 %>

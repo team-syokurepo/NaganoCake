@@ -11,26 +11,28 @@ Rails.application.routes.draw do
 }
 root to: 'homes#top'
 get "home/about" => "homes#about"
-get "search" => "searches#search"
+get 'search' => 'searches#search'
 
 
 namespace :customers do
 	resource :customers, only: [:show, :edit, :update, :destroy]
 	get "customers/quit" => "customers#quit"
-	delete "customers/quit_update" => "customers#quit_update"
-	resources :orders, only: [:index, :show, :create, :new]
-	get "orders/confirm" => "orders#confirm"
+	patch "customers/quit_update" => "customers#quit_update"
 	get "orders/thanks" => "orders#thanks"
-	resources :products, only: [:index, :show]
-	resources :cart_products, only: [:index, :create, :update, :destroy]
-	delete "cart_products/empty" => "cart_products#empty"
+	post "orders/confirm" => "orders#confirm"
+	resources :orders, only: [:index, :show, :create, :new]
+	resources :products, only: [:index, :show] do
+		resources :cart_products, only: [:create]
+	end
+	resources :cart_products, only: [:index, :update, :destroy]
+	delete "cart_product/empty" => "cart_products#empty"
 	resources :address_lists, only: [:index, :create, :edit, :update, :destroy]
 end
 
 namespace :admins do
-	resources :orders, only: [:index, :show, :update]
 	get "orders/today" => "orders#today"
-	patch "orders/:id/product_update" => "orders#product_update"
+	resources :orders, only: [:index, :show, :update]
+	patch "orders/:order_id/product_orders/:id" => "orders#product_update",as:"product_order_update"
 	resources :products
 	resources :categories, only: [:index, :create, :edit, :update, :destroy]
 	resources :customers, only: [:index, :show, :edit, :update]

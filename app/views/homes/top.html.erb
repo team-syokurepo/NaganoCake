@@ -2,7 +2,7 @@
 <div class="container">
 <div class="row">
 	<div class="col-xs-2">
-		<%= render 'homes/category_search' %>
+		<%= render 'homes/category_search', categories: @categories %>
 	</div>
 	<div class="col-xs-10">
 		<div class="main-image">
@@ -15,37 +15,20 @@
 				</p>
 			</div>
 		</div>
-		<div class="items">
+		<section class="recommend">
 			<h2>オススメ商品</h2>
-			<div class="item">
-				<div class="col-xs-3">
-					<div class="image1">
-					</div>
-					<p>自家製プリン</p>
-					<p>￥400</p>
+			<% @recommend.each do |recommend| %>
+				<div class="col-xs-3 recommend-box">
+					<%= link_to customers_product_path(recommend) do %>
+						<%= attachment_image_tag recommend, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150" %><br>
+					<% end %>
+					<%= link_to recommend.name, customers_product_path(recommend), class: "recommend-text" %><br>
+					￥<%= (recommend.price * 1.08).floor.to_s(:delimited) %>
 				</div>
-				<div class="col-xs-3">
-					<div class="image2">
-					</div>
-					<p>ケーキボール</p>
-					<p>￥500</p>
-				</div>
-				<div class="col-xs-3">
-					<div class="image3">
-					</div>
-					<p>クッキー詰め合わせ</p>
-					<p>￥2,980</p>
-				</div>
-				<div class="col-xs-3">
-					<div class="image4">
-					</div>
-					<p>マカロン詰め合わせ</p>
-					<p>￥3,300</p>
-				</div>
-			</div>
-		</div>
+			<% end %>
+		</section>
 		<div class="col-xs-offset-11 more">
-			<%= link_to "もっと見る>", customers_products_path %>
+			<%= link_to "もっと見る>", customers_products_path, class: "more-text" %>
 		</div>
 	</div>
 </div>

@@ -4,12 +4,15 @@
 
 .top-all {
 	background-color: #f1efe7;
-	padding-bottom: 20px;
 	color: #112a63;
+	height: auto;
+	flex-grow: 1;
+	padding-bottom: 20px;
 }
 /*home#topのcss*/
 .genre-search{
 	margin-top: 50px;
+	margin-bottom: 20px;
 	border: 1px solid #112a63;
 	background-color: #112a63;
 	color: #f1efe7;
@@ -23,6 +26,9 @@
 .genre {
 	padding-left: 10px;
 	padding-bottom: 50px;
+}
+.genre li {
+	padding-bottom: 10px;
 }
 .genre-item {
 	color: #f1efe7;
@@ -52,29 +58,19 @@
 .items {
 	color: #112a63;
 }
-.image1 {
-	height: 100px;
-	background-image: url(cake1.jpg);
-	background-size: cover;
-	background-position: center;
+.recommend-box:hover {
+	opacity: 0.5;
 }
-.image2 {
-	height: 100px;
-	background-image: url(cake2.jpg);
-	background-size: cover;
-	background-position: center;
+.recommend-text {
+	display: inline-block;
+	padding: 10px 0;
+	color: #112a63;
 }
-.image3 {
-	height: 100px;
-	background-image: url(cake3.jpg);
-	background-size: cover;
-	background-position: center;
+.more {
+	padding-bottom: 20px;
 }
-.image4 {
-	height: 100px;
-	background-image: url(cake4.jpg);
-	background-size: cover;
-	background-position: center;
+.more-text {
+	color: #112a63;
 }
 
 /*home#aboutのcss*/
